@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { azkar } from "./mappers/azkarMapper";
-import "./CategoryAzkar.css";
+import { azkar } from "../mappers/azkarMapper";
+import "../styles/CategoryAzkar.css";
 
 export default function CategoryAzkar({ categoryId, onBack }) {
   const categoryAzkar = azkar.find((item) => item.id === categoryId);

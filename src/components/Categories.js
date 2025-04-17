@@ -1,6 +1,6 @@
 import React from "react";
-import { azkar } from "./mappers/azkarMapper";
-import "./Categories.css";
+import { azkar } from "../mappers/azkarMapper";
+import "../styles/Categories.css";
 
 export default function Categories({ onCategorySelect }) {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import AzkarApp from "./AzkarApp";
+import AzkarApp from "./components/AzkarApp";
 
 function App() {
   return <AzkarApp />;

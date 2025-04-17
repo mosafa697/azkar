@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./App.css";
+import "../styles/App.css";
 import CategoryAzkar from "./CategoryAzkar";
 import Categories from "./Categories";
 
