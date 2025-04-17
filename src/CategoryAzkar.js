@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { azkar } from "./mappers/azkarMapper";
 import "./CategoryAzkar.css";
 
-export default function CategoryAzkar({ category, onBack }) {
-  const categoryAzkar = azkar[category];
+export default function CategoryAzkar({ categoryId, onBack }) {
+  const categoryAzkar = azkar.find((item) => item.id === categoryId);
   const [index, setIndex] = useState(0);
   const [clicks, setClicks] = useState(
     Array(categoryAzkar.phrases.length).fill(0)

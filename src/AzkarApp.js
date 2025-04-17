@@ -6,8 +6,8 @@ import Categories from "./Categories";
 export default function AzkarApp() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
+  const handleCategorySelect = (categoryId) => {
+    setSelectedCategory(categoryId);
   };
 
   const handleBack = () => {
@@ -18,5 +18,5 @@ export default function AzkarApp() {
     return <Categories onCategorySelect={handleCategorySelect} />;
   }
 
-  return <CategoryAzkar category={selectedCategory} onBack={handleBack} />;
+  return <CategoryAzkar categoryId={selectedCategory} onBack={handleBack} />;
 }
