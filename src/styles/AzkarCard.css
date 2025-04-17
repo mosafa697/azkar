@@ -20,6 +20,33 @@
   align-items: center;
 }
 
+.font-controls {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.font-btn {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.font-btn:hover {
+  background-color: #1976d2;
+}
+
 .phrase {
   margin-bottom: 1rem;
   text-align: center;
@@ -28,6 +55,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  transition: font-size 0.3s ease;
 }
 
 .counter-btn {

@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { azkar } from "../mappers/azkarMapper";
 import ZekrCard from "./ZekrCard";
 
-export default function CategoryAzkar({ categoryId, onBack }) {
+export default function CategoryAzkar({
+  categoryId,
+  onBack,
+  fontSize,
+  onIncreaseFontSize,
+  onDecreaseFontSize,
+}) {
   const categoryAzkar = azkar.find((item) => item.id === categoryId);
   const [index, setIndex] = useState(0);
   const [clicks, setClicks] = useState(
@@ -33,6 +39,9 @@ export default function CategoryAzkar({ categoryId, onBack }) {
       onNext={handleNext}
       onBack={onBack}
       isLastPhrase={isLastPhrase}
+      fontSize={fontSize}
+      onIncreaseFontSize={onIncreaseFontSize}
+      onDecreaseFontSize={onDecreaseFontSize}
     />
   );
 }

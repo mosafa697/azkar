@@ -8,11 +8,24 @@ export default function ZekrCard({
   onNext,
   onBack,
   isLastPhrase,
+  fontSize,
+  onIncreaseFontSize,
+  onDecreaseFontSize,
 }) {
   return (
     <div className="container">
       <div className="card">
-        <h2 className="phrase">{phrase}</h2>
+        <div className="font-controls">
+          <button className="font-btn" onClick={onDecreaseFontSize}>
+            -
+          </button>
+          <button className="font-btn" onClick={onIncreaseFontSize}>
+            +
+          </button>
+        </div>
+        <h2 className="phrase" style={{ fontSize: `${fontSize}px` }}>
+          {phrase}
+        </h2>
         <button className="counter-btn" onClick={onPhraseClick}>
           {counter}
         </button>
