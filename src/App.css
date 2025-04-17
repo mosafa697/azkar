@@ -30,10 +30,6 @@ body {
   transition: color 0.3s;
 }
 
-.phrase:hover {
-  color: #007bff;
-}
-
 .counter {
   font-size: 18px;
   color: #555;
