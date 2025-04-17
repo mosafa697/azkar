@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { azkar } from "../mappers/azkarMapper";
-import "../styles/CategoryAzkar.css";
+import ZekrCard from "./ZekrCard";
 
 export default function CategoryAzkar({ categoryId, onBack }) {
   const categoryAzkar = azkar.find((item) => item.id === categoryId);
@@ -26,23 +26,13 @@ export default function CategoryAzkar({ categoryId, onBack }) {
   const isLastPhrase = index === categoryAzkar.phrases.length - 1;
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2 className="phrase">{categoryAzkar.phrases[index].text}</h2>
-        <button className="counter-btn" onClick={handlePhraseClick}>
-          {clicks[index]}
-        </button>
-        <div className="buttons-container">
-          {!isLastPhrase && (
-            <button className="next-btn" onClick={handleNext}>
-              التالي
-            </button>
-          )}
-          <button className="back-btn" onClick={onBack}>
-            العودة للقائمة
-          </button>
-        </div>
-      </div>
-    </div>
+    <ZekrCard
+      phrase={categoryAzkar.phrases[index].text}
+      counter={clicks[index]}
+      onPhraseClick={handlePhraseClick}
+      onNext={handleNext}
+      onBack={onBack}
+      isLastPhrase={isLastPhrase}
+    />
   );
 }

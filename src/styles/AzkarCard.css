@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  position: relative;
+  align-items: center;
+}
+
+.phrase {
+  margin-bottom: 1rem;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.counter-btn {
+  background-color: #2196f3;
+  color: white;
+  margin: 1rem 0;
+  width: 100%;
+  max-width: 300px;
+  align-self: center;
+}
+
+.counter-btn:hover {
+  background-color: #1976d2;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.next-btn,
+.back-btn,
+.counter-btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-width: 120px;
+}
+
+.next-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.next-btn:hover {
+  background-color: #45a049;
+}
+
+.back-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.back-btn:hover {
+  background-color: #d32f2f;
+}
