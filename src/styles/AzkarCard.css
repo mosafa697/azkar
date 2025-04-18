@@ -13,6 +13,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 600px;
+  max-height: 200px;
   display: flex;
   flex-direction: column;
   min-height: 400px;
@@ -86,6 +87,8 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-height: initial;
+  overflow-y: auto;
   transition: font-size 0.3s ease;
 }
 
@@ -100,5 +103,5 @@
 
 .counter-container {
   position: absolute;
-  top: 1rem;
+  top: 0rem;
 }

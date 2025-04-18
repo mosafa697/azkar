@@ -30,7 +30,7 @@ export default function CategoryAzkar({
   };
 
   const handlePrev = () => {
-    if (index > 2) {
+    if (index > 0) {
       setIndex(index - 1);
     }
   };
