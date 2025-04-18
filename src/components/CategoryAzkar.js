@@ -29,14 +29,21 @@ export default function CategoryAzkar({
     }
   };
 
+  const handlePrev = () => {
+    if (index > 2) {
+      setIndex(index - 1);
+    }
+  };
+
   const isLastPhrase = index === categoryAzkar.phrases.length - 1;
 
   return (
     <ZekrCard
-      phrase={categoryAzkar.phrases[index].text}
+      phrase={categoryAzkar.phrases[index]}
       counter={clicks[index]}
       onPhraseClick={handlePhraseClick}
       onNext={handleNext}
+      onPrev={handlePrev}
       onBack={onBack}
       isLastPhrase={isLastPhrase}
       fontSize={fontSize}

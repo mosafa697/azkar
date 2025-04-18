@@ -23,14 +23,22 @@
 .font-controls {
   position: absolute;
   top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.option-controls {
+  position: absolute;
+  top: 1rem;
   left: 1rem;
   display: flex;
   gap: 0.5rem;
 }
 
-.font-btn {
-  background-color: #2196f3;
-  color: white;
+.font-btn,
+.back-btn,
+.switch-btn {
   border: none;
   border-radius: 50%;
   width: 32px;
@@ -43,8 +51,31 @@
   transition: background-color 0.3s;
 }
 
+.font-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
 .font-btn:hover {
   background-color: #1976d2;
+}
+
+.back-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.back-btn:hover {
+  background-color: #d32f2f;
+}
+
+.switch-btn {
+  background-color: #20c428;
+  color: white;
+}
+
+.switch-btn:hover {
+  background-color: #1c7440;
 }
 
 .phrase {
@@ -58,19 +89,6 @@
   transition: font-size 0.3s ease;
 }
 
-.counter-btn {
-  background-color: #2196f3;
-  color: white;
-  margin: 1rem 0;
-  width: 100%;
-  max-width: 300px;
-  align-self: center;
-}
-
-.counter-btn:hover {
-  background-color: #1976d2;
-}
-
 .buttons-container {
   display: flex;
   gap: 1rem;
@@ -80,32 +98,7 @@
   width: 100%;
 }
 
-.next-btn,
-.back-btn,
-.counter-btn {
-  padding: 0.8rem 1.5rem;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  min-width: 120px;
-}
-
-.next-btn {
-  background-color: #4caf50;
-  color: white;
-}
-
-.next-btn:hover {
-  background-color: #45a049;
-}
-
-.back-btn {
-  background-color: #f44336;
-  color: white;
-}
-
-.back-btn:hover {
-  background-color: #d32f2f;
+.counter-container {
+  position: absolute;
+  top: 1rem;
 }
