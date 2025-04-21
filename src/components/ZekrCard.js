@@ -44,7 +44,10 @@ export default function ZekrCard({
         <h2
           className="phrase"
           onClick={onPhraseClick}
-          style={{ fontSize: `${fontSize}px` }}
+          style={{
+            fontSize: `${fontSize}px`,
+            whiteSpace: "pre-line",
+          }}
         >
           {phrase.text}
         </h2>
