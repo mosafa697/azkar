@@ -17,9 +17,15 @@ export default function CategoryAzkar({
 
   const handlePhraseClick = () => {
     const newClicks = [...clicks];
-    if (newClicks[index] < categoryAzkar.phrases[index].count) {
+    const phraseCount = categoryAzkar.phrases[index].count || 0;
+
+    if (newClicks[index] < phraseCount) {
       newClicks[index] += 1;
       setClicks(newClicks);
+
+      if (newClicks[index] === phraseCount) {
+        setTimeout(handleNext, 300);
+      }
     }
   };
 
