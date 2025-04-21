@@ -21,23 +21,25 @@ export default function ZekrCard({
   return (
     <div className="container">
       <div className="card">
-        <div className="font-controls">
-          <button className="font-btn" onClick={onDecreaseFontSize}>
-            <MinusIcon />
-          </button>
-          <button className="font-btn" onClick={onIncreaseFontSize}>
-            <PlusIcon />
-          </button>
-        </div>
-        <div className="counter-container">
-          <h2>
-            {counter} / {phrase.count}
-          </h2>
-        </div>
-        <div className="option-controls">
-          <button className="back-btn" onClick={onBack}>
-            <HomeIcon />
-          </button>
+        <div className="controls-container">
+          <div className="font-controls">
+            <button className="font-btn" onClick={onDecreaseFontSize}>
+              <MinusIcon />
+            </button>
+            <button className="font-btn" onClick={onIncreaseFontSize}>
+              <PlusIcon />
+            </button>
+          </div>
+          <div className="counter-container">
+            <h2>
+              {counter} / {phrase.count}
+            </h2>
+          </div>
+          <div className="option-controls">
+            <button className="back-btn" onClick={onBack}>
+              <HomeIcon />
+            </button>
+          </div>
         </div>
         <h2
           className="phrase"
@@ -48,17 +50,21 @@ export default function ZekrCard({
         </h2>
 
         <div className="buttons-container">
-          {phrase.id > 1 && (
-            <button className="switch-btn" onClick={onPrev}>
-              <ChevronRightIcon />
-            </button>
-          )}
+          <button
+            className="switch-btn"
+            onClick={onPrev}
+            style={{ visibility: phrase.id > 1 ? "visible" : "hidden" }}
+          >
+            <ChevronRightIcon />
+          </button>
 
-          {!isLastPhrase && (
-            <button className="switch-btn" onClick={onNext}>
-              <ChevronLeftIcon />
-            </button>
-          )}
+          <button
+            className="switch-btn"
+            onClick={onNext}
+            style={{ visibility: !isLastPhrase ? "visible" : "hidden" }}
+          >
+            <ChevronLeftIcon />
+          </button>
         </div>
       </div>
     </div>

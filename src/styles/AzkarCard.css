@@ -1,107 +1,86 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   padding: 1rem;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .card {
-  background: white;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
   width: 100%;
-  max-width: 600px;
-  max-height: 200px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
-  min-height: 400px;
-  position: relative;
+  gap: 1.5rem;
+  box-sizing: border-box;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.controls-container {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
 
-.font-controls {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  gap: 0.5rem;
-}
-
+.font-controls,
 .option-controls {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
   display: flex;
   gap: 0.5rem;
+}
+
+.counter-container h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.phrase {
+  text-align: center;
+  line-height: 1.8;
+  cursor: pointer;
+  margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 50vh;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
 
 .font-btn,
 .back-btn,
 .switch-btn {
+  background-color: #f3f4f6;
   border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0.2rem 0.35rem;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-}
-
-.font-btn {
-  background-color: #2196f3;
-  color: white;
-}
-
-.font-btn:hover {
-  background-color: #1976d2;
-}
-
-.back-btn {
-  background-color: #f44336;
-  color: white;
-}
-
-.back-btn:hover {
-  background-color: #d32f2f;
-}
-
-.switch-btn {
-  background-color: #20c428;
-  color: white;
-}
-
-.switch-btn:hover {
-  background-color: #1c7440;
-}
-
-.phrase {
-  margin-bottom: 1rem;
-  text-align: center;
-  flex-grow: 1;
+  transition: background-color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-height: initial;
-  overflow-y: auto;
-  transition: font-size 0.3s ease;
 }
 
-.buttons-container {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: auto;
-  padding-top: 1rem;
-  width: 100%;
+.font-btn:hover,
+.back-btn:hover,
+.switch-btn:hover {
+  background-color: #e5e7eb;
 }
 
-.counter-container {
-  position: absolute;
-  top: 0rem;
+.font-btn svg,
+.back-btn svg,
+.switch-btn svg {
+  width: 20px;
+  height: 20px;
 }
