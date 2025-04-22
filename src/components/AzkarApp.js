@@ -7,6 +7,7 @@ import config from "../config/config";
 export default function AzkarApp() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [fontSize, setFontSize] = useState(config.font.defaultSize);
+  // var shuffled = false;
 
   const handleCategorySelect = (categoryId) => {
     setSelectedCategory(categoryId);
@@ -28,6 +29,24 @@ export default function AzkarApp() {
     );
   };
 
+  const shuffle = (phrases) => {
+    // if (!shuffled) {
+    const texts = phrases.map((p) => p.text);
+
+    for (let i = texts.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [texts[i], texts[j]] = [texts[j], texts[i]];
+    }
+
+    // shuffled = !shuffled;
+
+    return phrases.map((phrase, index) => ({
+      ...phrase,
+      text: texts[index],
+    }));
+    // }
+  };
+
   if (!selectedCategory) {
     return <Categories onCategorySelect={handleCategorySelect} />;
   }
@@ -39,6 +58,8 @@ export default function AzkarApp() {
       fontSize={fontSize}
       onIncreaseFontSize={increaseFontSize}
       onDecreaseFontSize={decreaseFontSize}
+      // isShuffle={true}
+      // shuffle={shuffle}
     />
   );
 }

@@ -5,11 +5,13 @@ import PlusIcon from "../icons/plus.js";
 import HomeIcon from "../icons/home.js";
 import ChevronLeftIcon from "../icons/chevron-left.js";
 import ChevronRightIcon from "../icons/chevron-right.js";
+import ZekrCounter from "./ZekrCounter.js";
 
 export default function ZekrCard({
   phrase,
   counter,
   onPhraseClick,
+  isAnimating,
   onNext,
   onPrev,
   onBack,
@@ -32,7 +34,8 @@ export default function ZekrCard({
           </div>
           <div className="counter-container">
             <h2>
-              {counter} / {phrase.count}
+              {/* {counter} / {phrase.count} */}
+              {/* TODO: Add counter for index */}
             </h2>
           </div>
           <div className="option-controls">
@@ -43,7 +46,6 @@ export default function ZekrCard({
         </div>
         <h2
           className="phrase"
-          onClick={onPhraseClick}
           style={{
             fontSize: `${fontSize}px`,
             whiteSpace: "pre-line",
@@ -60,6 +62,12 @@ export default function ZekrCard({
           >
             <ChevronRightIcon />
           </button>
+
+          <ZekrCounter
+            onClickHandler={onPhraseClick}
+            counter={phrase.count - counter}
+            isAnimating={isAnimating}
+          />
 
           <button
             className="switch-btn"
