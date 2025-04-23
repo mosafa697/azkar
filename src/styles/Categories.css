@@ -8,6 +8,10 @@
   background-color: #f9fafb;
 }
 
+.dark .container {
+  background-color: #1e293b;
+}
+
 .card {
   background-color: #fff;
   border-radius: 16px;
@@ -19,6 +23,11 @@
   flex-direction: column;
   gap: 1.5rem;
   box-sizing: border-box;
+}
+
+.dark .card {
+  background-color: #334155;
+  color: #f8fafc;
 }
 
 .categories-container {
@@ -41,6 +50,57 @@
 
 .category-btn:hover {
   background-color: #e5e7eb;
+}
+
+.category-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dark .category-btn svg {
+  color: #f8fafc;
+}
+
+.dark .category-btn {
+  background-color: #475569;
+  color: #f8fafc;
+}
+
+.dark .category-btn:hover {
+  background-color: #64748b;
+}
+
+.setting-btn {
+  background-color: #f3f4f6;
+  border: none;
+  padding: 0.2rem 0.35rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.setting-btn:hover {
+  background-color: #e5e7eb;
+}
+
+.dark .setting-btn {
+  background-color: #475569;
+}
+
+.dark .setting-btn:hover {
+  background-color: #64748b;
+}
+
+.setting-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dark .setting-btn svg {
+  color: #f8fafc;
 }
 
 @media (min-width: 480px) {

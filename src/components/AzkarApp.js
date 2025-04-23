@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import "../styles/App.css";
 import CategoryAzkar from "./CategoryAzkar";
 import Categories from "./Categories";
+import SettingsPage from "./SettingsPage";
 import config from "../config/config";
 
 export default function AzkarApp() {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [SettingsShow, setSettingsShow] = useState(false);
   const [fontSize, setFontSize] = useState(config.font.defaultSize);
+  const [darkMode, setDarkMode] = useState(false);
   // var shuffled = false;
 
   const handleCategorySelect = (categoryId) => {
@@ -48,7 +51,21 @@ export default function AzkarApp() {
   };
 
   if (!selectedCategory) {
-    return <Categories onCategorySelect={handleCategorySelect} />;
+    if (SettingsShow) {
+      return (
+        <SettingsPage
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          onBack={() => setSettingsShow(false)}
+        />
+      );
+    }
+    return (
+      <Categories
+        onCategorySelect={handleCategorySelect}
+        onOpenSettings={() => setSettingsShow(true)}
+      />
+    );
   }
 
   return (

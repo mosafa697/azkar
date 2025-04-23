@@ -1,11 +1,15 @@
 import React from "react";
 import { azkar } from "../mappers/azkarMapper";
+import ToothIcon from "../icons/tooth.js";
 import "../styles/Categories.css";
 
-export default function Categories({ onCategorySelect }) {
+export default function Categories({ onCategorySelect, onOpenSettings }) {
   return (
     <div className="container">
       <div className="card">
+        <button className="setting-btn" onClick={onOpenSettings}>
+          <ToothIcon />
+        </button>
         <div className="card-header">
           <p>
             قال الله تعالى:{" "}
@@ -24,7 +28,6 @@ export default function Categories({ onCategorySelect }) {
             . الحديث رواه مسلم وغيره.
           </p>
         </div>
-
         <div className="categories-container">
           {Object.values(azkar).map((category) => (
             <button

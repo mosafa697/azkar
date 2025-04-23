@@ -21,6 +21,11 @@
   overflow-y: auto;
 }
 
+.dark .card {
+  background-color: #474d53;
+  color: #f9fafb;
+}
+
 .controls-container {
   display: flex;
   justify-content: space-between;
@@ -40,6 +45,10 @@
   font-weight: 600;
 }
 
+.dark .counter-container h2 {
+  color: #e5e7eb;
+}
+
 .phrase {
   text-align: center;
   line-height: 1.8;
@@ -50,6 +59,10 @@
   flex-grow: 1;
   overflow-y: auto;
   max-height: 50vh;
+}
+
+.dark .phrase {
+  color: #f1f5f9;
 }
 
 .buttons-container {
@@ -76,6 +89,18 @@
 .back-btn:hover,
 .switch-btn:hover {
   background-color: #e5e7eb;
+}
+
+.dark .font-btn,
+.dark .back-btn,
+.dark .switch-btn {
+  background-color: #777e88;
+}
+
+.dark .font-btn:hover,
+.dark .back-btn:hover,
+.dark .switch-btn:hover {
+  background-color: #4b5563;
 }
 
 .font-btn svg,

@@ -12,6 +12,11 @@
   justify-content: center;
 }
 
+.dark .counter-btn {
+  background-color: #777e88;
+  border-color: #4b5563;
+}
+
 .counter-btn.bounce {
   animation: pop 0.3s ease;
 }
