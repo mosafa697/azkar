@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleShuffle } from "../store/shufflePhasesSlice";
+import { toggleTheme } from "../store/darkThemeSlice";
 import "../styles/Categories.css";
 import SunIcon from "../icons/sun";
 import MoonIcon from "../icons/moon";
@@ -6,39 +9,53 @@ import ExitIcon from "../icons/exit";
 import ShuffleIcon from "../icons/shuffle";
 import OrderedIcon from "../icons/ordered";
 
-export default function SettingsPage({
-  onBack,
-  darkMode,
-  setDarkMode,
-  shuffled,
-  setShuffled,
-}) {
+export default function SettingsPage({ onBack }) {
+  const dispatch = useDispatch();
+
+  const shuffled = useSelector((state) => state.shufflePhases.value);
+  const darkTheme = useSelector((state) => state.darkTheme.value);
+
   useEffect(() => {
     const root = document.documentElement;
-    if (darkMode) {
+    if (darkTheme) {
       root.classList.add("dark");
     } else {
       root.classList.remove("dark");
     }
-  }, [darkMode]);
-
-  const toggleTheme = () => {
-    setDarkMode((prev) => !prev);
-  };
-
-  const shufflePheses = () => {
-    setShuffled((prev) => !prev);
-  };
+  }, [darkTheme]);
 
   return (
     <div className="container">
       <div className="card">
-        <button className="setting-btn" onClick={toggleTheme}>
-          {darkMode ? <SunIcon /> : <MoonIcon />}
-        </button>
-        <button className="setting-btn" onClick={shufflePheses}>
-          {shuffled ? <ShuffleIcon /> : <OrderedIcon />}
-        </button>
+        <div className="setting-card">
+          <div className="setting-item">
+            <span className="setting-label">سمة النظام</span>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={darkTheme}
+                onChange={() => dispatch(toggleTheme())}
+              />
+              <span className="slider">
+                {darkTheme ? <SunIcon /> : <MoonIcon />}
+              </span>
+            </label>
+          </div>
+
+          <div className="setting-item">
+            <span className="setting-label">ترتيب الأذكار</span>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={shuffled}
+                onChange={() => dispatch(toggleShuffle())}
+              />
+              <span className="slider">
+                {shuffled ? <OrderedIcon /> : <ShuffleIcon />}
+              </span>
+            </label>
+          </div>
+        </div>
         <button className="category-btn" onClick={onBack}>
           <ExitIcon />
         </button>

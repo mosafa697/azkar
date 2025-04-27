@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./counterSlice"; // example
+import phasesReducer from "./phasesSlice";
+import shufflePhasesReducer from "./shufflePhasesSlice";
+import darkThemeReducer from "./darkThemeSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    phases: phasesReducer,
+    shufflePhases: shufflePhasesReducer,
+    darkTheme: darkThemeReducer,
   },
 });
