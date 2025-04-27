@@ -3,6 +3,7 @@ import phasesReducer from "./phasesSlice";
 import shufflePhasesReducer from "./shufflePhasesSlice";
 import darkThemeReducer from "./darkThemeSlice";
 import fontSizeReducer from "./fontSizeSlice";
+import indexCountReducer from "./indexCountSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     shufflePhases: shufflePhasesReducer,
     darkTheme: darkThemeReducer,
     fontSize: fontSizeReducer,
+    indexCount: indexCountReducer,
   },
 });

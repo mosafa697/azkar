@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { increament, decreament } from "../store/fontSizeSlice.js";
+import { increamentFontSize, decreamentFontSize } from "../store/fontSizeSlice.js";
+import { increamentIndex, decreamentIndex } from "../store/indexCountSlice.js";
 import "../styles/AzkarCard.css";
 import MinusIcon from "../icons/minus.js";
 import PlusIcon from "../icons/plus.js";
@@ -14,30 +15,29 @@ export default function ZekrCard({
   counter,
   onPhraseClick,
   isAnimating,
-  onNext,
-  onPrev,
   onBack,
-  isLastPhrase,
 }) {
   const dispatch = useDispatch();
   const fontSize = useSelector((state) => state.fontSize.value);
+  const isLastPhrase = useSelector((state) => state.indexCount.isLastPhrase);
+  const indexCount = useSelector((state) => state.indexCount.value);
+  const phasesLength = useSelector((state) => state.indexCount.phasesLength);
 
   return (
     <div className="container">
       <div className="card">
         <div className="controls-container">
           <div className="font-controls">
-            <button className="font-btn" onClick={() => dispatch(decreament())}>
+            <button className="font-btn" onClick={() => dispatch(decreamentFontSize())}>
               <MinusIcon />
             </button>
-            <button className="font-btn" onClick={() => dispatch(increament())}>
+            <button className="font-btn" onClick={() => dispatch(increamentFontSize())}>
               <PlusIcon />
             </button>
           </div>
           <div className="counter-container">
             <h2>
-              {/* {counter} / {phrase.count} */}
-              {/* TODO: Add counter for index */}
+              {indexCount} / {phasesLength}
             </h2>
           </div>
           <div className="option-controls">
@@ -59,7 +59,7 @@ export default function ZekrCard({
         <div className="buttons-container">
           <button
             className="switch-btn"
-            onClick={onPrev}
+            onClick={() => dispatch(decreamentIndex())}
             style={{ visibility: phrase.id > 1 ? "visible" : "hidden" }}
           >
             <ChevronRightIcon />
@@ -73,7 +73,7 @@ export default function ZekrCard({
 
           <button
             className="switch-btn"
-            onClick={onNext}
+            onClick={() => dispatch(increamentIndex())}
             style={{ visibility: !isLastPhrase ? "visible" : "hidden" }}
           >
             <ChevronLeftIcon />

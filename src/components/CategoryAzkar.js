@@ -1,16 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { azkar } from "../mappers/azkarMapper";
 import ZekrCard from "./ZekrCard";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increamentIndex,
+  setIsLastPhrase,
+  setPhasesLengthCount,
+} from "../store/indexCountSlice.js";
 
 export default function CategoryAzkar({ categoryId, onBack }) {
+  const dispatch = useDispatch();
+  const index = useSelector((state) => state.indexCount.value);
+
   const categoryAzkar = azkar.find((item) => item.id === categoryId);
 
+  useEffect(() => {
+    dispatch(setPhasesLengthCount(categoryAzkar.phrases.length - 1));
+    dispatch(setIsLastPhrase(index === categoryAzkar.phrases.length - 1));
+  }, [categoryAzkar.phrases.length, index, dispatch]);
+
   const [isAnimating, setIsAnimating] = useState(false);
-  const [index, setIndex] = useState(0);
+
   const [clicks, setClicks] = useState(
     Array(categoryAzkar.phrases.length).fill(0)
   );
-  const isLastPhrase = index === categoryAzkar.phrases.length - 1;
 
   const handlePhraseClick = () => {
     const newClicks = [...clicks];
@@ -22,24 +35,12 @@ export default function CategoryAzkar({ categoryId, onBack }) {
       setClicks(newClicks);
 
       if (newClicks[index] === phraseCount) {
-        setTimeout(handleNext, 300);
+        setTimeout(() => dispatch(increamentIndex()), 300);
       }
     }
     setTimeout(() => {
       setIsAnimating(false);
     }, 300);
-  };
-
-  const handleNext = () => {
-    if (index < categoryAzkar.phrases.length - 1) {
-      setIndex(index + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-    }
   };
 
   return (
@@ -48,10 +49,7 @@ export default function CategoryAzkar({ categoryId, onBack }) {
       counter={clicks[index]}
       onPhraseClick={handlePhraseClick}
       isAnimating={isAnimating}
-      onNext={handleNext}
-      onPrev={handlePrev}
       onBack={onBack}
-      isLastPhrase={isLastPhrase}
     />
   );
 }
