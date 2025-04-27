@@ -2,20 +2,8 @@ import React, { useState } from "react";
 import { azkar } from "../mappers/azkarMapper";
 import ZekrCard from "./ZekrCard";
 
-export default function CategoryAzkar({
-  categoryId,
-  onBack,
-  fontSize,
-  onIncreaseFontSize,
-  onDecreaseFontSize,
-  // isShuffle,
-  // shuffle,
-}) {
+export default function CategoryAzkar({ categoryId, onBack }) {
   const categoryAzkar = azkar.find((item) => item.id === categoryId);
-
-  // if (isShuffle) {
-  //   categoryAzkar.phrases = shuffle(categoryAzkar.phrases);
-  // }
 
   const [isAnimating, setIsAnimating] = useState(false);
   const [index, setIndex] = useState(0);
@@ -64,9 +52,6 @@ export default function CategoryAzkar({
       onPrev={handlePrev}
       onBack={onBack}
       isLastPhrase={isLastPhrase}
-      fontSize={fontSize}
-      onIncreaseFontSize={onIncreaseFontSize}
-      onDecreaseFontSize={onDecreaseFontSize}
     />
   );
 }

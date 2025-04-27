@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { increament, decreament } from "../store/fontSizeSlice.js";
 import "../styles/AzkarCard.css";
 import MinusIcon from "../icons/minus.js";
 import PlusIcon from "../icons/plus.js";
@@ -16,19 +18,19 @@ export default function ZekrCard({
   onPrev,
   onBack,
   isLastPhrase,
-  fontSize,
-  onIncreaseFontSize,
-  onDecreaseFontSize,
 }) {
+  const dispatch = useDispatch();
+  const fontSize = useSelector((state) => state.fontSize.value);
+
   return (
     <div className="container">
       <div className="card">
         <div className="controls-container">
           <div className="font-controls">
-            <button className="font-btn" onClick={onDecreaseFontSize}>
+            <button className="font-btn" onClick={() => dispatch(decreament())}>
               <MinusIcon />
             </button>
-            <button className="font-btn" onClick={onIncreaseFontSize}>
+            <button className="font-btn" onClick={() => dispatch(increament())}>
               <PlusIcon />
             </button>
           </div>
