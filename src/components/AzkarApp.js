@@ -2,43 +2,32 @@ import React, { useState } from "react";
 import "../styles/App.css";
 import CategoryAzkar from "./CategoryAzkar";
 import Categories from "./Categories";
-import config from "../config/config";
+import SettingsPage from "./SettingsPage";
 
 export default function AzkarApp() {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [fontSize, setFontSize] = useState(config.font.defaultSize);
+  const [SettingsShow, setSettingsShow] = useState(false);
 
   const handleCategorySelect = (categoryId) => {
     setSelectedCategory(categoryId);
   };
 
-  const handleBack = () => {
-    setSelectedCategory(null);
-  };
-
-  const increaseFontSize = () => {
-    setFontSize((prevSize) =>
-      Math.min(prevSize + config.font.increment, config.font.maxSize)
-    );
-  };
-
-  const decreaseFontSize = () => {
-    setFontSize((prevSize) =>
-      Math.max(prevSize - config.font.increment, config.font.minSize)
-    );
-  };
-
   if (!selectedCategory) {
-    return <Categories onCategorySelect={handleCategorySelect} />;
+    if (SettingsShow) {
+      return <SettingsPage onBack={() => setSettingsShow(false)} />;
+    }
+    return (
+      <Categories
+        onCategorySelect={handleCategorySelect}
+        onOpenSettings={() => setSettingsShow(true)}
+      />
+    );
   }
 
   return (
     <CategoryAzkar
       categoryId={selectedCategory}
-      onBack={handleBack}
-      fontSize={fontSize}
-      onIncreaseFontSize={increaseFontSize}
-      onDecreaseFontSize={decreaseFontSize}
+      onBack={() => setSelectedCategory(null)}
     />
   );
 }

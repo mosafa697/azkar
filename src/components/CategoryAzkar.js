@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { azkar } from "../mappers/azkarMapper";
 import ZekrCard from "./ZekrCard";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increamentIndex,
+  setIsLastPhrase,
+  setPhasesLengthCount,
+} from "../store/indexCountSlice.js";
 
-export default function CategoryAzkar({
-  categoryId,
-  onBack,
-  fontSize,
-  onIncreaseFontSize,
-  onDecreaseFontSize,
-}) {
+export default function CategoryAzkar({ categoryId, onBack }) {
+  const dispatch = useDispatch();
+  const index = useSelector((state) => state.indexCount.value);
+
   const categoryAzkar = azkar.find((item) => item.id === categoryId);
-  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    dispatch(setPhasesLengthCount(categoryAzkar.phrases.length - 1));
+    dispatch(setIsLastPhrase(index === categoryAzkar.phrases.length - 1));
+  }, [categoryAzkar.phrases.length, index, dispatch]);
+
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const [clicks, setClicks] = useState(
     Array(categoryAzkar.phrases.length).fill(0)
   );
@@ -20,41 +30,26 @@ export default function CategoryAzkar({
     const phraseCount = categoryAzkar.phrases[index].count || 0;
 
     if (newClicks[index] < phraseCount) {
+      setIsAnimating(true);
       newClicks[index] += 1;
       setClicks(newClicks);
 
       if (newClicks[index] === phraseCount) {
-        setTimeout(handleNext, 300);
+        setTimeout(() => dispatch(increamentIndex()), 300);
       }
     }
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 300);
   };
-
-  const handleNext = () => {
-    if (index < categoryAzkar.phrases.length - 1) {
-      setIndex(index + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-    }
-  };
-
-  const isLastPhrase = index === categoryAzkar.phrases.length - 1;
 
   return (
     <ZekrCard
       phrase={categoryAzkar.phrases[index]}
       counter={clicks[index]}
       onPhraseClick={handlePhraseClick}
-      onNext={handleNext}
-      onPrev={handlePrev}
+      isAnimating={isAnimating}
       onBack={onBack}
-      isLastPhrase={isLastPhrase}
-      fontSize={fontSize}
-      onIncreaseFontSize={onIncreaseFontSize}
-      onDecreaseFontSize={onDecreaseFontSize}
     />
   );
 }

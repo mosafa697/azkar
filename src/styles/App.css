@@ -6,6 +6,10 @@ body {
   direction: rtl;
 }
 
+.dark body {
+  background-color: #1e293b;
+}
+
 .container {
   height: 100vh;
   display: flex;
@@ -22,6 +26,11 @@ body {
   max-width: 500px;
 }
 
+.dark .card {
+  background: #334155;
+  color: #f1f5f9;
+}
+
 .phrase {
   font-size: 24px;
   color: #333;
@@ -30,10 +39,18 @@ body {
   transition: color 0.3s;
 }
 
+.dark .phrase {
+  color: #e2e8f0;
+}
+
 .counter {
   font-size: 18px;
   color: #555;
   margin-bottom: 20px;
+}
+
+.dark .counter {
+  color: #cbd5e1;
 }
 
 .next-btn {
@@ -49,4 +66,12 @@ body {
 
 .next-btn:hover {
   background-color: #0056b3;
+}
+
+.dark .next-btn {
+  background-color: #2563eb;
+}
+
+.dark .next-btn:hover {
+  background-color: #1d4ed8;
 }
