@@ -41,6 +41,7 @@
   flex-direction: column;
   gap: 1.5rem;
   box-sizing: border-box;
+  min-height: 50vh;
 }
 
 .dark .card {

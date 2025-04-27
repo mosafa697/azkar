@@ -59,6 +59,7 @@
   flex-grow: 1;
   overflow-y: auto;
   max-height: 50vh;
+  align-content: center;
 }
 
 .dark .phrase {
