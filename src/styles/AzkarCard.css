@@ -39,14 +39,23 @@
   gap: 0.5rem;
 }
 
-.counter-container h2 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 600;
+.counter-container {
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 10px;
+  margin-top: 8px;
+  width: 20vh;
 }
 
-.dark .counter-container h2 {
+.dark .counter-container {
   color: #e5e7eb;
+}
+
+.counter-bar {
+  background-color: #1b5e20;
+  height: 100%;
+  transition: width 0.3s ease-in-out;
 }
 
 .phrase {

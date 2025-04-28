@@ -1,6 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { increamentFontSize, decreamentFontSize } from "../store/fontSizeSlice.js";
+import {
+  increamentFontSize,
+  decreamentFontSize,
+} from "../store/fontSizeSlice.js";
 import { increamentIndex, decreamentIndex } from "../store/indexCountSlice.js";
 import "../styles/AzkarCard.css";
 import MinusIcon from "../icons/minus.js";
@@ -20,7 +23,7 @@ export default function ZekrCard({
   const dispatch = useDispatch();
   const fontSize = useSelector((state) => state.fontSize.value);
   const isLastPhrase = useSelector((state) => state.indexCount.isLastPhrase);
-  const indexCount = useSelector((state) => state.indexCount.value);
+  const indexCount = useSelector((state) => state.indexCount.value) + 1;
   const phasesLength = useSelector((state) => state.indexCount.phasesLength);
 
   return (
@@ -28,17 +31,25 @@ export default function ZekrCard({
       <div className="card">
         <div className="controls-container">
           <div className="font-controls">
-            <button className="font-btn" onClick={() => dispatch(decreamentFontSize())}>
+            <button
+              className="font-btn"
+              onClick={() => dispatch(decreamentFontSize())}
+            >
               <MinusIcon />
             </button>
-            <button className="font-btn" onClick={() => dispatch(increamentFontSize())}>
+            <button
+              className="font-btn"
+              onClick={() => dispatch(increamentFontSize())}
+            >
               <PlusIcon />
             </button>
           </div>
           <div className="counter-container">
-            <h2>
-              {indexCount} / {phasesLength}
-            </h2>
+            <div className="counter-bar"
+              style={{
+                width: `${(indexCount / phasesLength) * 100}%`,
+              }}
+            ></div>
           </div>
           <div className="option-controls">
             <button className="back-btn" onClick={onBack}>
