@@ -1,16 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "../styles/AzkarCard.css";
+import { increamentIndex, decreamentIndex } from "../store/indexCountSlice.js";
 import {
   increamentFontSize,
   decreamentFontSize,
 } from "../store/fontSizeSlice.js";
-import { increamentIndex, decreamentIndex } from "../store/indexCountSlice.js";
-import "../styles/AzkarCard.css";
-import MinusIcon from "../icons/minus.js";
-import PlusIcon from "../icons/plus.js";
-import HomeIcon from "../icons/home.js";
-import ChevronLeftIcon from "../icons/chevron-left.js";
-import ChevronRightIcon from "../icons/chevron-right.js";
+import {
+  MinusIcon,
+  PlusIcon,
+  HomeIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "../icons/iconRepo.js";
 import ZekrCounter from "./ZekrCounter.js";
 
 export default function ZekrCard({
@@ -45,7 +47,8 @@ export default function ZekrCard({
             </button>
           </div>
           <div className="counter-container">
-            <div className="counter-bar"
+            <div
+              className="counter-bar"
               style={{
                 width: `${(indexCount / phasesLength) * 100}%`,
               }}
@@ -60,7 +63,7 @@ export default function ZekrCard({
         <h2
           className="phrase"
           style={{
-            fontSize: `${fontSize}px`,
+            fontSize: `${fontSize}vh`,
             whiteSpace: "pre-line",
           }}
         >

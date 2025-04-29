@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleShuffle } from "../store/phasesSlice";
 import { toggleTheme } from "../store/darkThemeSlice";
 import "../styles/Categories.css";
-import SunIcon from "../icons/sun";
-import MoonIcon from "../icons/moon";
-import ExitIcon from "../icons/exit";
-import ShuffleIcon from "../icons/shuffle";
-import OrderedIcon from "../icons/ordered";
+import {
+  SunIcon,
+  MoonIcon,
+  ExitIcon,
+  ShuffleIcon,
+  OrderedIcon,
+} from "../icons/iconRepo";
 
 export default function SettingsPage({ onBack }) {
   const dispatch = useDispatch();
