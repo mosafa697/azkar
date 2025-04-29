@@ -31,6 +31,7 @@
 }
 
 .card {
+  position: relative;
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -49,6 +50,10 @@
   color: #f8fafc;
 }
 
+.card-header {
+  font-size: 1.5vh;
+}
+
 .categories-container {
   display: flex;
   flex-direction: column;
@@ -60,8 +65,8 @@
   border: none;
   border-radius: 8px;
   padding: 0.75rem 1rem;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 2vh;
+  font-weight: 1000;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -99,6 +104,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
 }
 
 .setting-btn:hover {
@@ -190,11 +199,5 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .category-btn {
-    font-size: 1rem;
   }
 }
