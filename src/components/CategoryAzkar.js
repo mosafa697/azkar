@@ -3,7 +3,7 @@ import { azkar } from "../mappers/azkarMapper";
 import ZekrCard from "./ZekrCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  increamentIndex,
+  incrementIndex,
   setIsLastPhrase,
   setPhasesLengthCount,
 } from "../store/indexCountSlice.js";
@@ -35,7 +35,7 @@ export default function CategoryAzkar({ categoryId, onBack }) {
       setClicks(newClicks);
 
       if (newClicks[index] === phraseCount) {
-        setTimeout(() => dispatch(increamentIndex()), 300);
+        setTimeout(() => dispatch(incrementIndex()), 300);
       }
     }
     setTimeout(() => {

@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/AzkarCard.css";
-import { increamentIndex, decreamentIndex } from "../store/indexCountSlice.js";
+import { incrementIndex, decrementIndex } from "../store/indexCountSlice.js";
 import {
-  increamentFontSize,
-  decreamentFontSize,
+  incrementFontSize,
+  decrementFontSize,
 } from "../store/fontSizeSlice.js";
 import {
   MinusIcon,
@@ -35,13 +35,13 @@ export default function ZekrCard({
           <div className="font-controls">
             <button
               className="font-btn"
-              onClick={() => dispatch(decreamentFontSize())}
+              onClick={() => dispatch(decrementFontSize())}
             >
               <MinusIcon />
             </button>
             <button
               className="font-btn"
-              onClick={() => dispatch(increamentFontSize())}
+              onClick={() => dispatch(incrementFontSize())}
             >
               <PlusIcon />
             </button>
@@ -75,7 +75,7 @@ export default function ZekrCard({
         <div className="buttons-container">
           <button
             className="switch-btn"
-            onClick={() => dispatch(decreamentIndex())}
+            onClick={() => dispatch(decrementIndex())}
             style={{ visibility: phrase.id > 1 ? "visible" : "hidden" }}
           >
             <ChevronRightIcon />
@@ -89,7 +89,7 @@ export default function ZekrCard({
 
           <button
             className="switch-btn"
-            onClick={() => dispatch(increamentIndex())}
+            onClick={() => dispatch(incrementIndex())}
             style={{ visibility: !isLastPhrase ? "visible" : "hidden" }}
           >
             <ChevronLeftIcon />

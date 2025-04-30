@@ -10,12 +10,12 @@ const indexCountSlice = createSlice({
   name: "indexCount",
   initialState,
   reducers: {
-    increamentIndex: (state) => {
+    incrementIndex: (state) => {
       if (state.value < state.phasesLength) {
         state.value += 1;
       }
     },
-    decreamentIndex: (state) => {
+    decrementIndex: (state) => {
       if (state.value > 0) {
         state.value -= 1;
       }
@@ -33,8 +33,8 @@ const indexCountSlice = createSlice({
 });
 
 export const {
-  increamentIndex,
-  decreamentIndex,
+  incrementIndex,
+  decrementIndex,
   setIndexCount,
   setPhasesLengthCount,
   setIsLastPhrase,
