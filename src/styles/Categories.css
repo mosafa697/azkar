@@ -1,8 +1,8 @@
 :root {
-  --card-bg: #ffffff;
+  --card-bg: #e4debb;
   --text-color: #1f2937;
-  --slider-bg: #e5e7eb;
-  --slider-bg-active: #4f46e5;
+  --slider-bg: #f1eede;
+  --slider-bg-active: #ccc07d;
   --icon-color: #475569;
   --icon-color-active: #f8fafc;
 }
@@ -23,7 +23,7 @@
   padding: 2rem;
   box-sizing: border-box;
   min-height: 100vh;
-  background-color: #f9fafb;
+  background-color: #ebe3bc;
 }
 
 .dark .container {
@@ -31,7 +31,8 @@
 }
 
 .card {
-  background-color: #fff;
+  position: relative;
+  background-color: #ece9d7;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 2rem;
@@ -49,6 +50,10 @@
   color: #f8fafc;
 }
 
+.card-header {
+  font-size: 2vh;
+}
+
 .categories-container {
   display: flex;
   flex-direction: column;
@@ -56,19 +61,20 @@
 }
 
 .category-btn {
-  background-color: #f3f4f6;
+  background-color: #e4debb;
   border: none;
   border-radius: 8px;
   padding: 0.75rem 1rem;
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 2vh;
+  font-weight: 1000;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .category-btn:hover {
-  background-color: #e5e7eb;
+  background-color: #ccc07d;
 }
 
 .category-btn svg {
@@ -90,15 +96,20 @@
 }
 
 .setting-btn {
-  background-color: #f3f4f6;
+  background-color: #e4debb;
   border: none;
-  padding: 0.2rem 0.35rem;
+  padding: 0vh;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .setting-btn:hover {
@@ -150,6 +161,7 @@
   width: 50px;
   height: 28px;
   display: flex;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .switch input {
@@ -170,7 +182,7 @@
   width: inherit;
 }
 
-.switch input:checked + .slider {
+.switch input:checked+.slider {
   background-color: var(--slider-bg-active);
 }
 
@@ -181,7 +193,7 @@
   transition: color 0.4s ease;
 }
 
-.switch input:checked + .slider svg {
+.switch input:checked+.slider svg {
   color: var(--icon-color-active);
 }
 
@@ -190,11 +202,5 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .category-btn {
-    font-size: 1rem;
   }
 }

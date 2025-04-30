@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleShuffle } from "../store/shufflePhasesSlice";
+import { toggleShuffle } from "../store/phasesSlice";
 import { toggleTheme } from "../store/darkThemeSlice";
 import "../styles/Categories.css";
-import SunIcon from "../icons/sun";
-import MoonIcon from "../icons/moon";
-import ExitIcon from "../icons/exit";
-import ShuffleIcon from "../icons/shuffle";
-import OrderedIcon from "../icons/ordered";
+import {
+  SunIcon,
+  MoonIcon,
+  ExitIcon,
+  ShuffleIcon,
+  OrderedIcon,
+} from "../icons/iconRepo";
 
 export default function SettingsPage({ onBack }) {
   const dispatch = useDispatch();
 
-  const shuffled = useSelector((state) => state.shufflePhases.value);
+  const isShuffled = useSelector((state) => state.phases.isShuffled);
   const darkTheme = useSelector((state) => state.darkTheme.value);
 
   useEffect(() => {
@@ -47,11 +49,11 @@ export default function SettingsPage({ onBack }) {
             <label className="switch">
               <input
                 type="checkbox"
-                checked={shuffled}
+                checked={isShuffled}
                 onChange={() => dispatch(toggleShuffle())}
               />
               <span className="slider">
-                {shuffled ? <OrderedIcon /> : <ShuffleIcon />}
+                {isShuffled ? <OrderedIcon /> : <ShuffleIcon />}
               </span>
             </label>
           </div>

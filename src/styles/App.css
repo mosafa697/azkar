@@ -32,7 +32,7 @@ body {
 }
 
 .phrase {
-  font-size: 24px;
+  font-size: 2vh;
   color: #333;
   cursor: pointer;
   margin-bottom: 20px;
@@ -41,37 +41,4 @@ body {
 
 .dark .phrase {
   color: #e2e8f0;
-}
-
-.counter {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.dark .counter {
-  color: #cbd5e1;
-}
-
-.next-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 25px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.next-btn:hover {
-  background-color: #0056b3;
-}
-
-.dark .next-btn {
-  background-color: #2563eb;
-}
-
-.dark .next-btn:hover {
-  background-color: #1d4ed8;
 }

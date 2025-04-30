@@ -1,13 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { increamentFontSize, decreamentFontSize } from "../store/fontSizeSlice.js";
-import { increamentIndex, decreamentIndex } from "../store/indexCountSlice.js";
 import "../styles/AzkarCard.css";
-import MinusIcon from "../icons/minus.js";
-import PlusIcon from "../icons/plus.js";
-import HomeIcon from "../icons/home.js";
-import ChevronLeftIcon from "../icons/chevron-left.js";
-import ChevronRightIcon from "../icons/chevron-right.js";
+import { increamentIndex, decreamentIndex } from "../store/indexCountSlice.js";
+import {
+  increamentFontSize,
+  decreamentFontSize,
+} from "../store/fontSizeSlice.js";
+import {
+  MinusIcon,
+  PlusIcon,
+  HomeIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "../icons/iconRepo.js";
 import ZekrCounter from "./ZekrCounter.js";
 
 export default function ZekrCard({
@@ -28,19 +33,29 @@ export default function ZekrCard({
       <div className="card">
         <div className="controls-container">
           <div className="font-controls">
-            <button className="font-btn" onClick={() => dispatch(decreamentFontSize())}>
+            <button
+              className="font-btn"
+              onClick={() => dispatch(decreamentFontSize())}
+            >
               <MinusIcon />
             </button>
-            <button className="font-btn" onClick={() => dispatch(increamentFontSize())}>
+            <button
+              className="font-btn"
+              onClick={() => dispatch(increamentFontSize())}
+            >
               <PlusIcon />
             </button>
           </div>
           <div className="counter-container">
-            <h2>
-              {indexCount} / {phasesLength}
-            </h2>
+            <div
+              className="counter-bar"
+              style={{
+                width: `${(indexCount / phasesLength) * 100}%`,
+              }}
+            ></div>
           </div>
           <div className="option-controls">
+            <button style={{ visibility: "hidden" }}></button>{/* TODO: find another way */}
             <button className="back-btn" onClick={onBack}>
               <HomeIcon />
             </button>
@@ -48,8 +63,9 @@ export default function ZekrCard({
         </div>
         <h2
           className="phrase"
+          onClick={onPhraseClick}
           style={{
-            fontSize: `${fontSize}px`,
+            fontSize: `${fontSize}vh`,
             whiteSpace: "pre-line",
           }}
         >
