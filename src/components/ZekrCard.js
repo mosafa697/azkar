@@ -25,7 +25,7 @@ export default function ZekrCard({
   const dispatch = useDispatch();
   const fontSize = useSelector((state) => state.fontSize.value);
   const isLastPhrase = useSelector((state) => state.indexCount.isLastPhrase);
-  const indexCount = useSelector((state) => state.indexCount.value) + 1;
+  const indexCount = useSelector((state) => state.indexCount.value);
   const phasesLength = useSelector((state) => state.indexCount.phasesLength);
 
   return (
@@ -55,6 +55,7 @@ export default function ZekrCard({
             ></div>
           </div>
           <div className="option-controls">
+            <button style={{ visibility: "hidden" }}></button>{/* TODO: find another way */}
             <button className="back-btn" onClick={onBack}>
               <HomeIcon />
             </button>
@@ -62,6 +63,7 @@ export default function ZekrCard({
         </div>
         <h2
           className="phrase"
+          onClick={onPhraseClick}
           style={{
             fontSize: `${fontSize}vh`,
             whiteSpace: "pre-line",
