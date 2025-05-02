@@ -45,6 +45,7 @@ export default function ZekrCard({
             >
               <PlusIcon />
             </button>
+            <button style={{ visibility: "hidden" }}></button>{/* TODO: find another way */}
           </div>
           <div className="counter-container">
             <div
@@ -55,6 +56,7 @@ export default function ZekrCard({
             ></div>
           </div>
           <div className="option-controls">
+            <button style={{ visibility: "hidden" }}></button>{/* TODO: find another way */}
             <button style={{ visibility: "hidden" }}></button>{/* TODO: find another way */}
             <button className="back-btn" onClick={onBack}>
               <HomeIcon />
