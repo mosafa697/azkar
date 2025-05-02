@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import phasesReducer from "./phasesSlice";
-import darkThemeReducer from "./darkThemeSlice";
+import themeReducer from "./themeSlice";
 import fontSizeReducer from "./fontSizeSlice";
 import indexCountReducer from "./indexCountSlice";
 
 export const store = configureStore({
   reducer: {
     phases: phasesReducer,
-    darkTheme: darkThemeReducer,
+    theme: themeReducer,
     fontSize: fontSizeReducer,
     indexCount: indexCountReducer,
   },
