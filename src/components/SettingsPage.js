@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleShuffle } from "../store/phasesSlice";
-import { toggleTheme } from "../store/darkThemeSlice";
+import { setTheme } from "../store/themeSlice";
 import "../styles/Categories.css";
 import {
   SunIcon,
@@ -14,17 +14,19 @@ import {
 export default function SettingsPage({ onBack }) {
   const dispatch = useDispatch();
 
-  const isShuffled = useSelector((state) => state.phases.isShuffled);
-  const darkTheme = useSelector((state) => state.darkTheme.value);
+  const shuffle = useSelector((state) => state.phases.shuffle);
+  const theme = useSelector((state) => state.theme.value);
 
   useEffect(() => {
     const root = document.documentElement;
-    if (darkTheme) {
+    if (theme === "dark") {
+      root.classList.remove("light");
       root.classList.add("dark");
     } else {
       root.classList.remove("dark");
+      root.classList.add("light");
     }
-  }, [darkTheme]);
+  }, [theme]);
 
   return (
     <div className="container">
@@ -35,11 +37,13 @@ export default function SettingsPage({ onBack }) {
             <label className="switch">
               <input
                 type="checkbox"
-                checked={darkTheme}
-                onChange={() => dispatch(toggleTheme())}
+                checked={theme === "dark"}
+                onChange={() =>
+                  dispatch(setTheme(theme === "dark" ? "light" : "dark"))
+                }
               />
               <span className="slider">
-                {darkTheme ? <SunIcon /> : <MoonIcon />}
+                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
               </span>
             </label>
           </div>
@@ -49,11 +53,11 @@ export default function SettingsPage({ onBack }) {
             <label className="switch">
               <input
                 type="checkbox"
-                checked={isShuffled}
+                checked={shuffle}
                 onChange={() => dispatch(toggleShuffle())}
               />
               <span className="slider">
-                {isShuffled ? <OrderedIcon /> : <ShuffleIcon />}
+                {shuffle ? <OrderedIcon /> : <ShuffleIcon />}
               </span>
             </label>
           </div>

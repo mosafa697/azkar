@@ -1,7 +1,7 @@
 :root {
-  --card-bg: #e4debb;
+  --card-bg: #f8ede0;
   --text-color: #1f2937;
-  --slider-bg: #f1eede;
+  --slider-bg: #fff9f4;
   --slider-bg-active: #ccc07d;
   --icon-color: #475569;
   --icon-color-active: #f8fafc;
@@ -23,7 +23,7 @@
   padding: 2rem;
   box-sizing: border-box;
   min-height: 100vh;
-  background-color: #ebe3bc;
+  background-color: #f8ede0;
 }
 
 .dark .container {
@@ -32,7 +32,7 @@
 
 .card {
   position: relative;
-  background-color: #ece9d7;
+  background-color: #fff9f4;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 2rem;
@@ -51,7 +51,7 @@
 }
 
 .card-header {
-  font-size: 2vh;
+  font-size: 3vh;
 }
 
 .categories-container {
@@ -61,11 +61,11 @@
 }
 
 .category-btn {
-  background-color: #e4debb;
+  background-color: #f8ede0;
   border: none;
   border-radius: 8px;
   padding: 0.75rem 1rem;
-  font-size: 2vh;
+  font-size: 2.8vh;
   font-weight: 1000;
   text-align: center;
   cursor: pointer;
@@ -74,7 +74,7 @@
 }
 
 .category-btn:hover {
-  background-color: #ccc07d;
+  background-color: #f1ebbd;
 }
 
 .category-btn svg {
@@ -96,7 +96,7 @@
 }
 
 .setting-btn {
-  background-color: #e4debb;
+  background-color: #f8ede0;
   border: none;
   padding: 0vh;
   border-radius: 8px;
@@ -113,7 +113,7 @@
 }
 
 .setting-btn:hover {
-  background-color: #e5e7eb;
+  background-color: #f1ebbd;
 }
 
 .dark .setting-btn {

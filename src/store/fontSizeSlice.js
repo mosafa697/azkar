@@ -9,13 +9,13 @@ const fontSizeSlice = createSlice({
   name: "fontSize",
   initialState,
   reducers: {
-    increamentFontSize: (state) => {
+    incrementFontSize: (state) => {
       state.value = Math.min(
         state.value + config.font.increment,
         config.font.maxSize
       );
     },
-    decreamentFontSize: (state) => {
+    decrementFontSize: (state) => {
       state.value = Math.max(
         state.value - config.font.increment,
         config.font.minSize
@@ -24,5 +24,5 @@ const fontSizeSlice = createSlice({
   },
 });
 
-export const { increamentFontSize, decreamentFontSize } = fontSizeSlice.actions;
+export const { incrementFontSize, decrementFontSize } = fontSizeSlice.actions;
 export default fontSizeSlice.reducer;

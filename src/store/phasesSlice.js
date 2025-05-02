@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: [],
-  isShuffled: false,
+  shuffle: false,
+  wasShuffled: false,
 };
 
 const phasesSlice = createSlice({
@@ -10,29 +11,17 @@ const phasesSlice = createSlice({
   initialState,
   reducers: {
     shufflePhases: (state) => {
-      console.log("shuffling..");
-
-      const texts = state.value.map((p) => p.text);
-
-      for (let i = texts.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [texts[i], texts[j]] = [texts[j], texts[i]];
-      }
-
-      state.value = state.value.map((phrase, index) => ({
-        ...phrase,
-        text: texts[index],
-      }));
+      state.value = [...state.value].sort(() => Math.random() - 0.5);
+      state.wasShuffled = true;
     },
     setPhases: (state, action) => {
-      console.log("set phases..");
-
       state.value = action.payload;
     },
     toggleShuffle: (state) => {
-      console.log("toggle shuffle, now is ", !state.isShuffled);
-
-      state.isShuffled = !state.isShuffled;
+      state.shuffle = !state.shuffle;
+      if (!state.shuffle) {
+        state.wasShuffled = false;
+      }
     },
   },
 });
