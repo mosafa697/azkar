@@ -14,7 +14,7 @@ import {
 export default function SettingsPage({ onBack }) {
   const dispatch = useDispatch();
 
-  const isShuffled = useSelector((state) => state.phases.isShuffled);
+  const shuffle = useSelector((state) => state.phases.shuffle);
   const darkTheme = useSelector((state) => state.darkTheme.value);
 
   useEffect(() => {
@@ -49,11 +49,11 @@ export default function SettingsPage({ onBack }) {
             <label className="switch">
               <input
                 type="checkbox"
-                checked={isShuffled}
+                checked={shuffle}
                 onChange={() => dispatch(toggleShuffle())}
               />
               <span className="slider">
-                {isShuffled ? <OrderedIcon /> : <ShuffleIcon />}
+                {shuffle ? <OrderedIcon /> : <ShuffleIcon />}
               </span>
             </label>
           </div>
