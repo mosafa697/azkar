@@ -11,6 +11,7 @@ const mapAzkarData = (data) => {
       id: phrase.id,
       text: phrase.text,
       count: phrase.count,
+      subtext: phrase.subtext,
       //   audio: phrase.audio,
       //   filename: phrase.filename,
     })),

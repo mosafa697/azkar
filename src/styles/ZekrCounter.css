@@ -4,7 +4,7 @@
   border: 1px solid #be9d68;
   border-radius: 40px;
   padding: 1.5rem 2rem;
-  font-size: 3vh;
+  font-size: 3dvh;
   font-weight: bold;
   transition: transform 0.3s ease;
   cursor: pointer;
@@ -17,6 +17,7 @@
 .dark .counter-btn {
   background-color: #777e88;
   border-color: #4b5563;
+  color: #ffffff;
 }
 
 .counter-btn.bounce {

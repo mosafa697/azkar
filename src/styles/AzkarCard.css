@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   padding: 1rem;
-  height: 100vh;
+  height: 100dvh;
   box-sizing: border-box;
 }
 
@@ -45,7 +45,7 @@
   overflow: hidden;
   height: 10px;
   margin-top: 8px;
-  width: 20vh;
+  width: 20dvh;
 }
 
 .dark .counter-container {
@@ -58,22 +58,35 @@
   transition: width 0.3s ease-in-out;
 }
 
-.phrase {
-  text-align: center;
-  line-height: 1.8;
-  cursor: pointer;
-  margin: 0;
+.content-container {
+  height: 100dvh;
   word-break: break-word;
   overflow-wrap: break-word;
   flex-grow: 1;
   overflow-y: auto;
-  max-height: 50vh;
   align-content: center;
+}
+
+.phrase {
+  padding: 3dvh;
+  text-align: center;
+  line-height: 1.8;
+  cursor: pointer;
+  margin: 0;
   -webkit-tap-highlight-color: transparent;
 }
 
 .dark .phrase {
   color: #f1f5f9;
+}
+
+.sub-phrase {
+  color: #777e88;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dark .sub-phrase {
+  color: #c2c4c5;
 }
 
 .buttons-container {
@@ -99,20 +112,22 @@
 }
 
 .switch-btn {
-  height: 6vh;
+  height: 6dvh;
   align-self: center;
 }
 
 .font-btn:hover,
 .back-btn:hover,
 .switch-btn:hover {
-  background-color: #f1ebbd;
+  background-color: #eee3d7;
 }
 
 .dark .font-btn,
 .dark .back-btn,
 .dark .switch-btn {
   background-color: #777e88;
+  color: #ffffff;
+  border: 1px solid #2d3d53;
 }
 
 .dark .font-btn:hover,

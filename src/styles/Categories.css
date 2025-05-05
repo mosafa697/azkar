@@ -2,7 +2,7 @@
   --card-bg: #f8ede0;
   --text-color: #1f2937;
   --slider-bg: #fff9f4;
-  --slider-bg-active: #ccc07d;
+  --slider-bg-active: #1b5e20;
   --icon-color: #475569;
   --icon-color-active: #f8fafc;
 }
@@ -22,7 +22,7 @@
   align-items: center;
   padding: 2rem;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: #f8ede0;
 }
 
@@ -42,7 +42,7 @@
   flex-direction: column;
   gap: 1.5rem;
   box-sizing: border-box;
-  min-height: 50vh;
+  min-height: 50dvh;
 }
 
 .dark .card {
@@ -51,7 +51,7 @@
 }
 
 .card-header {
-  font-size: 3vh;
+  font-size: 3dvh;
 }
 
 .categories-container {
@@ -62,11 +62,12 @@
 
 .category-btn {
   background-color: #f8ede0;
+  color: #1b5e20;
   border: none;
   border-radius: 8px;
   padding: 0.75rem 1rem;
-  font-size: 2.8vh;
-  font-weight: 1000;
+  font-size: 2.8dvh;
+  font-weight: 700;
   text-align: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -74,7 +75,7 @@
 }
 
 .category-btn:hover {
-  background-color: #f1ebbd;
+  background-color: #eee3d7;
 }
 
 .category-btn svg {
@@ -97,6 +98,7 @@
 
 .setting-btn {
   background-color: #f8ede0;
+  color: #1b5e20;
   border: none;
   padding: 0vh;
   border-radius: 8px;
@@ -113,7 +115,7 @@
 }
 
 .setting-btn:hover {
-  background-color: #f1ebbd;
+  background-color: #eee3d7;
 }
 
 .dark .setting-btn {
