@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleShuffle } from "../store/phasesSlice";
+import { toggleAppearance } from "../store/subTextSlice";
 import { setTheme } from "../store/themeSlice";
 import "../styles/Categories.css";
 import {
@@ -9,6 +10,8 @@ import {
   ExitIcon,
   ShuffleIcon,
   OrderedIcon,
+  EyeIcon,
+  EyeSlashIcon,
 } from "../icons/iconRepo";
 
 export default function SettingsPage({ onBack }) {
@@ -16,6 +19,7 @@ export default function SettingsPage({ onBack }) {
 
   const shuffle = useSelector((state) => state.phases.shuffle);
   const theme = useSelector((state) => state.theme.value);
+  const showSubText = useSelector((state) => state.subText.value);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -47,7 +51,6 @@ export default function SettingsPage({ onBack }) {
               </span>
             </label>
           </div>
-
           <div className="setting-item">
             <span className="setting-label">ترتيب الأذكار</span>
             <label className="switch">
@@ -58,6 +61,19 @@ export default function SettingsPage({ onBack }) {
               />
               <span className="slider">
                 {shuffle ? <OrderedIcon /> : <ShuffleIcon />}
+              </span>
+            </label>
+          </div>
+          <div className="setting-item">
+            <span className="setting-label">إظهار فضل الذكر</span>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={showSubText}
+                onChange={() => dispatch(toggleAppearance())}
+              />
+              <span className="slider">
+                {showSubText ? <EyeSlashIcon /> : <EyeIcon />}
               </span>
             </label>
           </div>
