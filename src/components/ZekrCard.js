@@ -45,7 +45,8 @@ export default function ZekrCard({
             >
               <PlusIcon />
             </button>
-            <button style={{ visibility: "hidden" }}></button>{/* TODO: find another way */}
+            <button style={{ visibility: "hidden" }}></button>
+            {/* TODO: find another way */}
           </div>
           <div className="counter-container">
             <div
@@ -56,23 +57,29 @@ export default function ZekrCard({
             ></div>
           </div>
           <div className="option-controls">
-            <button style={{ visibility: "hidden" }}></button>{/* TODO: find another way */}
-            <button style={{ visibility: "hidden" }}></button>{/* TODO: find another way */}
+            <button style={{ visibility: "hidden" }}></button>
+            {/* TODO: find another way */}
+            <button style={{ visibility: "hidden" }}></button>
+            {/* TODO: find another way */}
             <button className="back-btn" onClick={onBack}>
               <HomeIcon />
             </button>
           </div>
         </div>
-        <h2
-          className="phrase"
-          onClick={onPhraseClick}
-          style={{
-            fontSize: `${fontSize}vh`,
-            whiteSpace: "pre-line",
-          }}
-        >
-          {phrase.text}
-        </h2>
+        <div className="content-container">
+          <h2
+            className="phrase"
+            onClick={onPhraseClick}
+            style={{
+              fontSize: `${fontSize}vh`,
+              whiteSpace: "pre-line",
+            }}
+          >
+            {phrase.text}
+          </h2>
+          <hr />
+          <h5 className="sub-phrase">ثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديثثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديثثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديثثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديثثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديثثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديثثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديثثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديثثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديثثواب  شسيشسيشسي ش يسشيشسيتى شتس لا يشسىيتىيتشسى يسي شه سيتشستي شسيه هشسيا شايهذا الحديث</h5>
+        </div>
 
         <div className="buttons-container">
           <button
