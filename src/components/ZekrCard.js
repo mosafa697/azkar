@@ -86,7 +86,7 @@ export default function ZekrCard({
           <button
             className="switch-btn"
             onClick={() => dispatch(decrementIndex())}
-            style={{ visibility: phrase.id > 1 ? "visible" : "hidden" }}
+            style={{ visibility: indexCount > 0 ? "visible" : "hidden" }}
           >
             <ChevronRightIcon />
           </button>

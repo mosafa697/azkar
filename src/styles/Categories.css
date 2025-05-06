@@ -1,20 +1,41 @@
-:root {
+:root.light {
   --card-bg: #f8ede0;
   --text-color: #1f2937;
+  --container-bg: #f8ede0;
+  --btn-bg: #f8ede0;
+  --btn-hover-bg: #eee3d7;
+  --btn-text: #1b5e20;
   --slider-bg: #fff9f4;
   --slider-bg-active: #1b5e20;
   --icon-color: #475569;
   --icon-color-active: #f8fafc;
 }
 
-.dark {
-  --card-bg: #1e293b;
+:root.dark {
+  --card-bg: #334155;
   --text-color: #e2e8f0;
+  --container-bg: #1e293b;
+  --btn-bg: #475569;
+  --btn-hover-bg: #64748b;
+  --btn-text: #f8fafc;
   --slider-bg: #334155;
   --slider-bg-active: #6366f1;
   --icon-color: #cbd5e1;
   --icon-color-active: #f8fafc;
 }
+
+/* :root.solarized {
+  --card-bg: #fdf6e3;
+  --text-color: #657b83;
+  --container-bg: #eee8d5;
+  --btn-bg: #fdf6e3;
+  --btn-hover-bg: #e0dacd;
+  --btn-text: #586e75;
+  --slider-bg: #eee8d5;
+  --slider-bg-active: #b58900;
+  --icon-color: #657b83;
+  --icon-color-active: #fdf6e3;
+} */
 
 .container {
   display: flex;
@@ -184,7 +205,7 @@
   width: inherit;
 }
 
-.switch input:checked+.slider {
+.switch input:checked + .slider {
   background-color: var(--slider-bg-active);
 }
 
@@ -195,8 +216,18 @@
   transition: color 0.4s ease;
 }
 
-.switch input:checked+.slider svg {
+.switch input:checked + .slider svg {
   color: var(--icon-color-active);
+}
+
+.theme-btn {
+  border-radius: 20px;
+  padding: 8px;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (min-width: 480px) {

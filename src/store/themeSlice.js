@@ -1,7 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { LightBulb, MoonIcon, SunIcon } from "../icons/iconRepo";
 
 const initialState = {
   value: "light",
+  list: [
+    // { name: "light", icon: <LightBulb /> },
+    { name: "dark", icon: <MoonIcon /> },
+    // { name: "solarized", icon: <SunIcon /> },
+    { name: "light", icon: <SunIcon /> },
+  ],
 };
 
 const themeSlice = createSlice({
