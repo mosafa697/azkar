@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleShuffle } from "../store/phasesSlice";
 import { toggleAppearance } from "../store/subTextSlice";
 import { setTheme } from "../store/themeSlice";
-import "../styles/Categories.css";
 import {
   ExitIcon,
   ShuffleIcon,
@@ -37,10 +36,15 @@ export default function SettingsPage({ onBack }) {
                 <button
                   className="theme-btn"
                   style={{
-                    border:
+                    border: `2px solid ${
                       theme === name
-                        ? "2px solid rgb(0, 0, 0)"
-                        : "2px solid transparent",
+                        ? theme === "dark"
+                          ? "#ffffff"
+                          : theme === "light"
+                          ? "#2563eb"
+                          : "#00753a"
+                        : "transparent"
+                    }`,
                   }}
                   key={name}
                   onClick={() => dispatch(setTheme(name))}
