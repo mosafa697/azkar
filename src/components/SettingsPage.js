@@ -10,6 +10,7 @@ import {
   EyeIcon,
   EyeSlashIcon,
 } from "../icons/iconRepo";
+import { themeIcons } from "../mappers/themeIconsMapper";
 
 export default function SettingsPage({ onBack }) {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function SettingsPage({ onBack }) {
 
   useEffect(() => {
     const root = document.documentElement;
-    themeList.forEach((object) => root.classList.remove(object.name));
+    themeList.forEach((object) => root.classList.remove(object));
     root.classList.add(theme);
   }, [theme, themeList]);
 
@@ -32,9 +33,9 @@ export default function SettingsPage({ onBack }) {
           <div className="setting-item">
             <span className="setting-label">سمة النظام</span>
             <div className="slider">
-              {themeList.map(({ name, icon }) => (
+              {themeList.map((name) => (
                 <button
-                  className="theme-btn"
+                                    className="theme-btn"
                   style={{
                     border: `2px solid ${
                       theme === name
@@ -50,7 +51,7 @@ export default function SettingsPage({ onBack }) {
                   onClick={() => dispatch(setTheme(name))}
                   title={name}
                 >
-                  {icon}
+                  {themeIcons[name]}
                 </button>
               ))}
             </div>
@@ -73,7 +74,7 @@ export default function SettingsPage({ onBack }) {
             <label className="switch">
               <input
                 type="checkbox"
-                checked={showSubText}
+                checked={Boolean(showSubText)}
                 onChange={() => dispatch(toggleAppearance())}
               />
               <span className="slider">
