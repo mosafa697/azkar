@@ -2,9 +2,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { incrementIndex, decrementIndex } from "../store/indexCountSlice.js";
 import {
-  incrementFontSize,
-  decrementFontSize,
-} from "../store/fontSizeSlice.js";
+  incrementFontScale,
+  decrementFontScale,
+} from "../store/fontScaleSlice.js";
 import {
   MinusIcon,
   PlusIcon,
@@ -23,7 +23,7 @@ export default function ZekrCard({
   onBack,
 }) {
   const dispatch = useDispatch();
-  const fontSize = useSelector((state) => state.fontSize.value);
+  const fontScale = useSelector((state) => state.fontScale.value);
   const isLastPhrase = useSelector((state) => state.indexCount.isLastPhrase);
   const indexCount = useSelector((state) => state.indexCount.value);
   const phasesLength = useSelector((state) => state.indexCount.phasesLength);
@@ -36,13 +36,13 @@ export default function ZekrCard({
           <div className="font-controls">
             <button
               className="font-btn"
-              onClick={() => dispatch(decrementFontSize())}
+              onClick={() => dispatch(decrementFontScale())}
             >
               <MinusIcon />
             </button>
             <button
               className="font-btn"
-              onClick={() => dispatch(incrementFontSize())}
+              onClick={() => dispatch(incrementFontScale())}
             >
               <PlusIcon />
             </button>
@@ -71,7 +71,7 @@ export default function ZekrCard({
           <h2
             className="phrase"
             style={{
-              fontSize: `${fontSize}vh`,
+              fontScale: `${fontScale}vh`,
               whiteSpace: "pre-line",
             }}
           >
