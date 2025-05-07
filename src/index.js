@@ -8,6 +8,9 @@ import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+const savedTheme = localStorage.getItem("theme") || "solarized";
+document.documentElement.classList.add(savedTheme);
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
