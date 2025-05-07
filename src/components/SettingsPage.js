@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleShuffle } from "../store/phasesSlice";
 import { toggleAppearance } from "../store/subTextSlice";
 import { setTheme } from "../store/themeSlice";
-import "../styles/Categories.css";
 import {
-  SunIcon,
-  MoonIcon,
   ExitIcon,
   ShuffleIcon,
   OrderedIcon,
@@ -19,18 +16,14 @@ export default function SettingsPage({ onBack }) {
 
   const shuffle = useSelector((state) => state.phases.shuffle);
   const theme = useSelector((state) => state.theme.value);
+  const themeList = useSelector((state) => state.theme.list);
   const showSubText = useSelector((state) => state.subText.value);
 
   useEffect(() => {
     const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.remove("light");
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-      root.classList.add("light");
-    }
-  }, [theme]);
+    themeList.forEach((object) => root.classList.remove(object.name));
+    root.classList.add(theme);
+  }, [theme, themeList]);
 
   return (
     <div className="container">
@@ -38,18 +31,29 @@ export default function SettingsPage({ onBack }) {
         <div className="setting-card">
           <div className="setting-item">
             <span className="setting-label">سمة النظام</span>
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={theme === "dark"}
-                onChange={() =>
-                  dispatch(setTheme(theme === "dark" ? "light" : "dark"))
-                }
-              />
-              <span className="slider">
-                {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-              </span>
-            </label>
+            <div className="slider">
+              {themeList.map(({ name, icon }) => (
+                <button
+                  className="theme-btn"
+                  style={{
+                    border: `2px solid ${
+                      theme === name
+                        ? theme === "dark"
+                          ? "#ffffff"
+                          : theme === "light"
+                          ? "#2563eb"
+                          : "#00753a"
+                        : "transparent"
+                    }`,
+                  }}
+                  key={name}
+                  onClick={() => dispatch(setTheme(name))}
+                  title={name}
+                >
+                  {icon}
+                </button>
+              ))}
+            </div>
           </div>
           <div className="setting-item">
             <span className="setting-label">ترتيب الأذكار</span>

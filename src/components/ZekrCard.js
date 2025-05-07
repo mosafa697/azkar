@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../styles/AzkarCard.css";
 import { incrementIndex, decrementIndex } from "../store/indexCountSlice.js";
 import {
   incrementFontSize,
@@ -31,8 +30,8 @@ export default function ZekrCard({
   const showSubText = useSelector((state) => state.subText.value);
 
   return (
-    <div className="container">
-      <div className="card">
+    <div className="zekr-container">
+      <div className="zekr-card">
         <div className="controls-container">
           <div className="font-controls">
             <button
@@ -86,7 +85,7 @@ export default function ZekrCard({
           <button
             className="switch-btn"
             onClick={() => dispatch(decrementIndex())}
-            style={{ visibility: phrase.id > 1 ? "visible" : "hidden" }}
+            style={{ visibility: indexCount > 0 ? "visible" : "hidden" }}
           >
             <ChevronRightIcon />
           </button>

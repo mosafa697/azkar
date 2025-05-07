@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/ZekrCounter.css";
 
 const ZekrCounter = ({ onClickHandler, counter, isAnimating }) => {
   return (

@@ -1,7 +1,6 @@
 import React from "react";
 import { azkar } from "../mappers/azkarMapper";
 import { ToothIcon } from "../icons/iconRepo";
-import "../styles/Categories.css";
 
 export default function Categories({ onCategorySelect, onOpenSettings }) {
   return (
