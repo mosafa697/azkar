@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { azkar } from "../mappers/azkarMapper";
 import { ToothIcon } from "../icons/iconRepo";
 
 export default function Categories({ onCategorySelect, onOpenSettings }) {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredCategories = Object.values(azkar).filter((category) =>
+    category.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="container">
       <div className="card">
@@ -27,8 +33,17 @@ export default function Categories({ onCategorySelect, onOpenSettings }) {
             . الحديث رواه مسلم وغيره.
           </p>
         </div>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="ابحث عن فئة..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="search-input"
+          />
+        </div>
         <div className="categories-container">
-          {Object.values(azkar).map((category) => (
+          {filteredCategories.map((category) => (
             <button
               key={category.id}
               className="category-btn"
