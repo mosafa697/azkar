@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import config from "../config/config";
 
 const initialState = {
-  value: localStorage.getItem("fontScale") || config.font.defaultScale,
+  value: isNaN(parseFloat(localStorage.getItem("fontScale")))
+    ? config.font.defaultScale
+    : parseFloat(localStorage.getItem("fontScale")),
 };
 
 const fontScaleSlice = createSlice({

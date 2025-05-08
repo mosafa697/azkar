@@ -296,7 +296,6 @@ body {
 .phrase {
   color: var(--text-color);
   cursor: pointer;
-  font-size: 2dvh;
   line-height: 1.8;
   margin: 0;
   margin-bottom: 20px;

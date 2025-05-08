@@ -71,7 +71,7 @@ export default function ZekrCard({
           <h2
             className="phrase"
             style={{
-              fontScale: `${fontScale}vh`,
+              fontSize: `${fontScale}dvh`,
               whiteSpace: "pre-line",
             }}
           >
