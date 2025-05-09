@@ -182,7 +182,7 @@ body {
 }
 
 .search-input {
-  width: 100%;
+  width: -webkit-fill-available;
   max-width: 400px;
   padding: 0.75rem 1rem;
   font-size: 1rem;
@@ -231,7 +231,7 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.switch input:checked + .slider {
+.switch input:checked+.slider {
   background-color: var(--slider-bg-active);
 }
 
@@ -242,7 +242,7 @@ body {
   width: 20px;
 }
 
-.switch input:checked + .slider svg {
+.switch input:checked+.slider svg {
   color: var(--icon-color-active);
 }
 
@@ -403,9 +403,11 @@ body {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.25);
   }
+
   100% {
     transform: scale(1);
   }
