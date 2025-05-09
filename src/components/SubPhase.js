@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const SubPhrase = ({ subPhraseText }) => {
-  const fontSize = useSelector((state) => state.fontSize.value);
+  const fontScale = useSelector((state) => state.fontScale.value);
 
   return (
     <div>
@@ -10,7 +10,7 @@ const SubPhrase = ({ subPhraseText }) => {
       <h5
         className="sub-phrase"
         style={{
-          fontSize: `${fontSize - 0.5}vh`,
+          fontScale: `${fontScale - 0.5}vh`,
           whiteSpace: "pre-line",
         }}
       >

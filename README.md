@@ -50,8 +50,3 @@ Contributions are welcome! Please follow these steps:
 ## Contact
 
 For any inquiries or feedback, please contact [mosafa697@gmail.com].
-
-## TODOs
-
-- **Dark Mode**: Implement a dark mode for better usability in low-light environments.
-- **Shuffle Phrases**: Add an option to shuffle the Azkar phrases for variety.

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: true,
+  value: localStorage.getItem("showSubText") === "true",
 };
 
 const subTextSlice = createSlice({
@@ -10,6 +10,8 @@ const subTextSlice = createSlice({
   reducers: {
     toggleAppearance: (state) => {
       state.value = !state.value;
+
+      localStorage.setItem("showSubText", state.value);
     },
   },
 });

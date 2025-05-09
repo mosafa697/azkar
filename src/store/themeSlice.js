@@ -1,13 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { LightBulb, MoonIcon, SunIcon } from "../icons/iconRepo";
 
 const initialState = {
-  value: "solarized",
-  list: [
-    { name: "light", icon: <LightBulb /> },
-    { name: "solarized", icon: <SunIcon /> },
-    { name: "dark", icon: <MoonIcon /> },
-  ],
+  value: localStorage.getItem("theme") || "solarized",
+  list: ["light", "solarized", "dark"],
 };
 
 const themeSlice = createSlice({
@@ -16,6 +11,8 @@ const themeSlice = createSlice({
   reducers: {
     setTheme: (state, index) => {
       state.value = index.payload;
+
+      localStorage.setItem("theme", state.value);
     },
   },
 });
