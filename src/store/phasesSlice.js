@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: [],
-  shuffle: false,
+  shuffle: localStorage.getItem("shufflePhases") === "true",
   wasShuffled: false,
 };
 
@@ -19,6 +19,9 @@ const phasesSlice = createSlice({
     },
     toggleShuffle: (state) => {
       state.shuffle = !state.shuffle;
+
+      localStorage.setItem("shufflePhases", state.shuffle);
+
       if (!state.shuffle) {
         state.wasShuffled = false;
       }
