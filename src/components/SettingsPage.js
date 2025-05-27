@@ -11,6 +11,7 @@ import {
   EyeSlashIcon,
 } from "../icons/iconRepo";
 import { themeIcons } from "../mappers/themeIconsMapper";
+import ContactMe from "./ContactMe";
 
 export default function SettingsPage({ onBack }) {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ export default function SettingsPage({ onBack }) {
             <div className="slider">
               {themeList.map((name) => (
                 <button
-                                    className="theme-btn"
+                  className="theme-btn"
                   style={{
                     border: `2px solid ${
                       theme === name
@@ -82,6 +83,7 @@ export default function SettingsPage({ onBack }) {
               </span>
             </label>
           </div>
+          <ContactMe />
         </div>
         <button className="category-btn" onClick={onBack}>
           <ExitIcon />
