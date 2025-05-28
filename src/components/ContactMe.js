@@ -28,7 +28,6 @@ const ContactMe = () => {
           className="contact-form"
           data-netlify="true"
           netlify-honeypot="bot-field"
-          onSubmit={handleContactSubmit}
         >
           {/* Required hidden input for Netlify */}
           <input type="hidden" name="form-name" value="contact" />
@@ -70,7 +69,11 @@ const ContactMe = () => {
               للمطورين: يمكنكم أيضًا المساهمة في تنفيذ المشروع على مستودع GitHub
             </a>
           </div>
-          <button type="submit" className="contact-submit-btn">
+          <button
+            type="submit"
+            className="contact-submit-btn"
+            onClick={handleContactSubmit}
+          >
             إرسال
           </button>
         </form>
