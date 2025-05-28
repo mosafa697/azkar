@@ -9,7 +9,6 @@ const ContactMe = () => {
 
   const handleContactSubmit = () => {
     setTimeout(() => {
-      toast.success("تم إرسال الرسالة بنجاح!");
       setContactName("");
       setContactMsg("");
       setContactOpen(false);
