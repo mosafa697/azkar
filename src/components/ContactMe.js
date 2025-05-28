@@ -7,12 +7,13 @@ const ContactMe = () => {
   const [contactName, setContactName] = useState("");
   const [contactMsg, setContactMsg] = useState("");
 
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
-    setContactName("");
-    setContactMsg("");
-    setContactOpen(false);
-    toast.success("تم إرسال رسالتك بنجاح! شكراً لتواصلك.");
+  const handleContactSubmit = () => {
+    setTimeout(() => {
+      toast.success("تم إرسال الرسالة بنجاح!");
+      setContactName("");
+      setContactMsg("");
+      setContactOpen(false);
+    }, 100);
   };
 
   return (
@@ -26,8 +27,11 @@ const ContactMe = () => {
       {contactOpen && (
         <form
           className="contact-form"
-          data-netlify="true"
+          netlify 
           netlify-honeypot="bot-field"
+          name="contact"
+          method="POST"
+          onSubmit={handleContactSubmit}
         >
           {/* Required hidden input for Netlify */}
           <input type="hidden" name="form-name" value="contact" />
@@ -72,7 +76,6 @@ const ContactMe = () => {
           <button
             type="submit"
             className="contact-submit-btn"
-            onClick={handleContactSubmit}
           >
             إرسال
           </button>
