@@ -14,6 +14,7 @@ import {
 } from "../icons/iconRepo.js";
 import ZekrCounter from "./ZekrCounter.js";
 import SubPhrase from "./SubPhase.js";
+import { useSwipeable } from "react-swipeable";
 
 export default function ZekrCard({
   phrase,
@@ -28,6 +29,11 @@ export default function ZekrCard({
   const indexCount = useSelector((state) => state.indexCount.value);
   const phasesLength = useSelector((state) => state.indexCount.phasesLength);
   const showSubText = useSelector((state) => state.subText.value);
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => dispatch(decrementIndex()),
+    onSwipedRight: () => dispatch(incrementIndex()),
+  });
 
   return (
     <div className="zekr-container">
@@ -67,7 +73,11 @@ export default function ZekrCard({
             </button>
           </div>
         </div>
-        <div className="content-container" onClick={onPhraseClick}>
+        <div
+          className="content-container"
+          onClick={onPhraseClick}
+          {...swipeHandlers}
+        >
           <h2
             className="phrase"
             style={{
