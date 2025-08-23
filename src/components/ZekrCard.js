@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { incrementIndex, decrementIndex } from "../store/indexCountSlice.js";
 import {
@@ -30,9 +30,38 @@ export default function ZekrCard({
   const phasesLength = useSelector((state) => state.indexCount.phasesLength);
   const showSubText = useSelector((state) => state.subText.value);
 
+  const [swipeOffset, setSwipeOffset] = useState(0);
+  const [isSwipeAnimating, setIsSwipeAnimating] = useState(false);
+
   const swipeHandlers = useSwipeable({
-    onSwipedLeft: () => dispatch(decrementIndex()),
-    onSwipedRight: () => dispatch(incrementIndex()),
+    onSwiping: (eventData) => {
+      setSwipeOffset(eventData.deltaX * 0.5); // Apply some dampening
+    },
+    onSwipedLeft: () => {
+      setIsSwipeAnimating(true);
+      setSwipeOffset(-window.innerWidth);
+      setTimeout(() => {
+        dispatch(decrementIndex());
+        setSwipeOffset(0);
+        setIsSwipeAnimating(false);
+      }, 200);
+    },
+    onSwipedRight: () => {
+      setIsSwipeAnimating(true);
+      setSwipeOffset(window.innerWidth);
+      setTimeout(() => {
+        dispatch(incrementIndex());
+        setSwipeOffset(0);
+        setIsSwipeAnimating(false);
+      }, 200);
+    },
+    onSwiped: () => {
+      if (!isSwipeAnimating) {
+        setSwipeOffset(0);
+      }
+    },
+    trackMouse: true,
+    trackTouch: true,
   });
 
   return (
@@ -77,7 +106,32 @@ export default function ZekrCard({
           className="content-container"
           onClick={onPhraseClick}
           {...swipeHandlers}
+          style={{
+            transform: `translateX(${swipeOffset}px)`,
+            transition: isSwipeAnimating ? "transform 0.2s ease-out" : "none",
+            opacity: isSwipeAnimating ? 0.7 : 1,
+            position: "relative",
+          }}
         >
+          {/* Swipe indicators */}
+          {Math.abs(swipeOffset) > 50 && (
+            <>
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: swipeOffset > 0 ? "10px" : "auto",
+                  right: swipeOffset < 0 ? "10px" : "auto",
+                  transform: "translateY(-50%)",
+                  fontSize: "2rem",
+                  color: "var(--icon-color)",
+                  opacity: Math.min(Math.abs(swipeOffset) / 100, 1),
+                  zIndex: 1,
+                }}
+              ></div>
+            </>
+          )}
+
           <h2
             className="phrase"
             style={{
