@@ -29,6 +29,11 @@ const indexCountSlice = createSlice({
     setIsLastPhrase: (state, value) => {
       state.isLastPhrase = value.payload;
     },
+    resetIndexCount: (state) => {
+      state.value = 0;
+      state.phasesLength = 0;
+      state.isLastPhrase = false;
+    },
   },
 });
 
@@ -38,5 +43,6 @@ export const {
   setIndexCount,
   setPhasesLengthCount,
   setIsLastPhrase,
+  resetIndexCount,
 } = indexCountSlice.actions;
 export default indexCountSlice.reducer;

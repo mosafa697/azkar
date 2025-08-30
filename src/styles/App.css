@@ -89,8 +89,18 @@ body {
   width: 100%;
 }
 
+.card-setting-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 0 0.5rem 0;
+  font-size: 2.6dvh;
+  color: var(--text-color);
+  direction: ltr;
+}
+
 .card-header {
-  font-size: 3dvh;
+  font-size: 2.3dvh;
   color: var(--text-color);
 }
 
@@ -174,6 +184,47 @@ body {
   color: var(--text-color);
   display: flex;
   font-size: 1rem;
+}
+
+.total-count-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.total-count-number {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--icon-color);
+  padding: 0.25rem 0.5rem;
+  background-color: var(--secondary-bg-color);
+  border-radius: 6px;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.reset-btn {
+  align-items: center;
+  background-color: var(--button-bg-color);
+  border: 1px solid var(--button-border-color);
+  border-radius: 6px;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem;
+  transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.reset-btn:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+.reset-btn svg {
+  height: 16px;
+  width: 16px;
+  color: #ef4444;
 }
 
 .search-bar {
@@ -346,6 +397,7 @@ body {
 
 .font-btn,
 .back-btn,
+.card-setting-btn,
 .switch-btn {
   align-items: center;
   background-color: var(--button-bg-color);
@@ -367,12 +419,14 @@ body {
 
 .font-btn:hover,
 .back-btn:hover,
+.card-setting-btn:hover,
 .switch-btn:hover {
   background-color: var(--button-hover-bg-color);
 }
 
 .font-btn svg,
 .back-btn svg,
+.card-setting-btn svg,
 .switch-btn svg {
   height: 20px;
   width: 20px;

@@ -5,9 +5,12 @@ import {
   incrementIndex,
   setIsLastPhrase,
   setPhasesLengthCount,
+  resetIndexCount,
+  setIndexCount,
 } from "../store/indexCountSlice.js";
+import { incrementTotalCount } from "../store/totalCountSlice.js";
 import { azkar } from "../mappers/azkarMapper";
-import { setPhases, shufflePhases } from "../store/phasesSlice";
+import { setPhases, shufflePhases, resetPhases } from "../store/phasesSlice";
 
 export default function CategoryAzkar({ categoryId, onBack }) {
   const dispatch = useDispatch();
@@ -23,6 +26,19 @@ export default function CategoryAzkar({ categoryId, onBack }) {
       dispatch(setPhasesLengthCount(categoryAzkar.phrases.length - 1));
     }
   }, [categoryId, categoryAzkar, dispatch]);
+
+  // Load saved index when category changes
+  useEffect(() => {
+    const savedIndex = sessionStorage.getItem(`azkar-index-${categoryId}`);
+    if (savedIndex !== null) {
+      dispatch(setIndexCount(parseInt(savedIndex)));
+    }
+  }, [categoryId, dispatch]);
+
+  // Save index to sessionStorage whenever it changes
+  useEffect(() => {
+    sessionStorage.setItem(`azkar-index-${categoryId}`, index.toString());
+  }, [categoryId, index]);
 
   const categoryPhrases = useSelector((state) => state.phases.value);
 
@@ -54,6 +70,7 @@ export default function CategoryAzkar({ categoryId, onBack }) {
       setIsAnimating(true);
       newClicks[index] += 1;
       setClicks(newClicks);
+      dispatch(incrementTotalCount());
 
       if (newClicks[index] === phraseCount) {
         setTimeout(() => dispatch(incrementIndex()), 300);
@@ -64,6 +81,14 @@ export default function CategoryAzkar({ categoryId, onBack }) {
     }, 300);
   };
 
+  const handleBack = () => {
+    // Clear saved index and reset state when going back to categories
+    sessionStorage.removeItem(`azkar-index-${categoryId}`);
+    dispatch(resetIndexCount());
+    dispatch(resetPhases());
+    onBack();
+  };
+
   return (
     <>
       {categoryPhrases.length > 0 && categoryPhrases[index] && (
@@ -72,7 +97,7 @@ export default function CategoryAzkar({ categoryId, onBack }) {
           counter={clicks[index] ?? 0}
           onPhraseClick={handlePhraseClick}
           isAnimating={isAnimating}
-          onBack={onBack}
+          onBack={handleBack}
         />
       )}
     </>

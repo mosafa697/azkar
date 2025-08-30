@@ -3,9 +3,10 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import SettingsPage from "../components/SettingsPage";
-import themeReducer, { setTheme } from "../store/themeSlice";
-import phasesReducer, { toggleShuffle } from "../store/phasesSlice";
-import subTextReducer, { toggleAppearance } from "../store/subTextSlice";
+import themeReducer from "../store/themeSlice";
+import phasesReducer from "../store/phasesSlice";
+import subTextReducer from "../store/subTextSlice";
+import totalCountReducer from "../store/totalCountSlice";
 
 describe("SettingsPage", () => {
   let store;
@@ -17,11 +18,13 @@ describe("SettingsPage", () => {
         phases: phasesReducer,
         theme: themeReducer,
         subText: subTextReducer,
+        totalCount: totalCountReducer,
       },
       preloadedState: {
         phases: { shuffle: false },
         theme: { value: "light", list: ["light", "dark", "green"] },
         subText: { value: false },
+        totalCount: { value: 0 },
       },
     });
     onBack = jest.fn();
@@ -73,14 +76,30 @@ describe("SettingsPage", () => {
     expect(store.getState().subText.value).toBe(true);
   });
 
-  it("calls onBack when the exit button is clicked", () => {
-    const { container } = render(
+  it("unmounts correctly", () => {
+    const { unmount } = render(
       <Provider store={store}>
         <SettingsPage onBack={onBack} />
       </Provider>
     );
-    const exitButton = container.querySelector(".category-btn");
-    fireEvent.click(exitButton);
+    unmount();
+    render(
+      <Provider store={store}>
+        <SettingsPage onBack={onBack} />
+      </Provider>
+    );
+    expect(store.getState().subText.value).toBe(false);
+  });
+
+  it("calls onBack when the exit button is clicked", () => {
+    render(
+      <Provider store={store}>
+        <SettingsPage onBack={onBack} />
+      </Provider>
+    );
+    // Look for the back button with class "back-btn"
+    const backButton = screen.getByRole("button", { name: "" });
+    fireEvent.click(backButton);
     expect(onBack).toHaveBeenCalled();
   });
 
