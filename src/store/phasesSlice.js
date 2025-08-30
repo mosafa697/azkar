@@ -26,8 +26,12 @@ const phasesSlice = createSlice({
         state.wasShuffled = false;
       }
     },
+    resetPhases: (state) => {
+      state.value = [];
+      state.wasShuffled = false;
+    },
   },
 });
 
-export const { shufflePhases, setPhases, toggleShuffle } = phasesSlice.actions;
+export const { shufflePhases, setPhases, toggleShuffle, resetPhases } = phasesSlice.actions;
 export default phasesSlice.reducer;

@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleShuffle } from "../store/phasesSlice";
 import { toggleAppearance } from "../store/subTextSlice";
 import { setTheme } from "../store/themeSlice";
+import { resetTotalCount } from "../store/totalCountSlice";
 import {
-  ExitIcon,
   ShuffleIcon,
   OrderedIcon,
   EyeIcon,
   EyeSlashIcon,
+  ChevronLeftIcon,
+  TrashIcon,
 } from "../icons/iconRepo";
 import { themeIcons } from "../mappers/themeIconsMapper";
 import ContactMe from "./ContactMe";
@@ -20,6 +22,13 @@ export default function SettingsPage({ onBack }) {
   const theme = useSelector((state) => state.theme.value);
   const themeList = useSelector((state) => state.theme.list);
   const showSubText = useSelector((state) => state.subText.value);
+  const totalCount = useSelector((state) => state.totalCount.value);
+
+  const handleResetTotalCount = () => {
+    if (window.confirm("هل أنت متأكد من إعادة تعيين عداد الأذكار؟")) {
+      dispatch(resetTotalCount());
+    }
+  };
 
   useEffect(() => {
     const root = document.documentElement;
@@ -30,6 +39,11 @@ export default function SettingsPage({ onBack }) {
   return (
     <div className="container">
       <div className="card">
+        <div className="card-setting-header">
+          <button className="back-btn" onClick={onBack}>
+            <ChevronLeftIcon />
+          </button>
+        </div>
         <div className="setting-card">
           <div className="setting-item">
             <span className="setting-label">سمة النظام</span>
@@ -83,11 +97,23 @@ export default function SettingsPage({ onBack }) {
               </span>
             </label>
           </div>
+          <div className="setting-item">
+            <span className="setting-label">إجمالي الأذكار</span>
+            <div className="total-count-container">
+              <button
+                className="reset-btn"
+                onClick={handleResetTotalCount}
+                title="إعادة تعيين العداد"
+              >
+                <TrashIcon />
+              </button>
+              <span className="total-count-number">
+                {totalCount.toLocaleString()}
+              </span>
+            </div>
+          </div>
           <ContactMe />
         </div>
-        <button className="category-btn" onClick={onBack}>
-          <ExitIcon />
-        </button>
       </div>
     </div>
   );
