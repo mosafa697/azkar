@@ -28,6 +28,7 @@ const fontScaleSlice = createSlice({
       localStorage.setItem("fontScale", state.value);
     },
   },
+  // todo: add a selector to get the current font scale
 });
 
 export const { incrementFontScale, decrementFontScale } =
