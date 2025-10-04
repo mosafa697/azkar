@@ -40,7 +40,7 @@ export default function SettingsPage({ onBack }) {
     <div className="container">
       <div className="card">
         <div className="card-setting-header">
-          <button className="back-btn" onClick={onBack}>
+          <button className="back-btn" onClick={onBack} aria-label="الرجوع">
             <ChevronLeftIcon />
           </button>
         </div>
@@ -78,6 +78,7 @@ export default function SettingsPage({ onBack }) {
                 type="checkbox"
                 checked={shuffle}
                 onChange={() => dispatch(toggleShuffle())}
+                aria-label="تبديل ترتيب الأذكار"
               />
               <span className="slider">
                 {shuffle ? <OrderedIcon /> : <ShuffleIcon />}
@@ -91,6 +92,7 @@ export default function SettingsPage({ onBack }) {
                 type="checkbox"
                 checked={Boolean(showSubText)}
                 onChange={() => dispatch(toggleAppearance())}
+                aria-label="تبديل إظهار فضل الذكر"
               />
               <span className="slider">
                 {showSubText ? <EyeSlashIcon /> : <EyeIcon />}

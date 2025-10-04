@@ -4,7 +4,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const loadTotalCountFromStorage = () => {
   try {
     const savedCount = localStorage.getItem("azkarTotalCount");
-    return savedCount ? parseInt(savedCount, 10) : 0;
+    if (savedCount) {
+      const parsed = parseInt(savedCount, 10);
+      return isNaN(parsed) ? 0 : parsed;
+    }
+    return 0;
   } catch (error) {
     console.error("Error loading total count from localStorage:", error);
     return 0;

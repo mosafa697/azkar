@@ -12,7 +12,7 @@ export default function Categories({ onCategorySelect, onOpenSettings }) {
   return (
     <div className="container">
       <div className="card">
-        <button className="setting-btn" onClick={onOpenSettings}>
+        <button className="setting-btn" onClick={onOpenSettings} aria-label="فتح الإعدادات">
           <ToothIcon />
         </button>
         <div className="card-header">
@@ -47,6 +47,7 @@ export default function Categories({ onCategorySelect, onOpenSettings }) {
               key={category.id}
               className="category-btn"
               onClick={() => onCategorySelect(category.id)}
+              tabIndex="0"
             >
               {category.title}
             </button>

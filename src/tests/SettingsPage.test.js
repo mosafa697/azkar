@@ -98,7 +98,7 @@ describe("SettingsPage", () => {
       </Provider>
     );
     // Look for the back button with class "back-btn"
-    const backButton = screen.getByRole("button", { name: "" });
+    const backButton = screen.getByRole("button", { name: "الرجوع" });
     fireEvent.click(backButton);
     expect(onBack).toHaveBeenCalled();
   });

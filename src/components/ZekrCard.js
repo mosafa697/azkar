@@ -119,15 +119,16 @@ export default function ZekrCard({
               role="progressbar"
               aria-valuenow={indexCount}
               aria-valuemax={phasesLength}
+              aria-label="تقدم الذكر"
             />
           </div>
 
           <div className="option-controls">
             <button style={{ visibility: "hidden" }}></button>
-            <button className="card-setting-btn" onClick={handleSettingsClick}>
+            <button className="card-setting-btn" onClick={handleSettingsClick} aria-label="فتح إعدادات الذكر">
               <ToothIcon />
             </button>
-            <button className="back-btn" onClick={onBack}>
+            <button className="back-btn" onClick={onBack} aria-label="الرجوع للصفحة الرئيسية">
               <HomeIcon />
             </button>
           </div>
