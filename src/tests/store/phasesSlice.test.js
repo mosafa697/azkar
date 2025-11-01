@@ -26,11 +26,6 @@ describe('phasesSlice', () => {
   describe('initial state', () => {
     it('should return initial state with shuffle from localStorage', () => {
       mockGetItem.mockReturnValue('true');
-      const initialState = {
-        value: [],
-        shuffle: false, // This will be overridden by localStorage mock
-        wasShuffled: false,
-      };
 
       expect(phasesReducer(undefined, { type: 'unknown' })).toEqual(
         expect.objectContaining({

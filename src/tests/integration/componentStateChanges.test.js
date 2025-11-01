@@ -75,7 +75,7 @@ describe('Component State Changes', () => {
       const onPhraseClick = jest.fn();
       const onBack = jest.fn();
 
-      const { store, rerender } = render(
+      const { store } = render(
         <ZekrCard
           phrase={mockPhrase}
           counter={0}
@@ -96,19 +96,19 @@ describe('Component State Changes', () => {
         }
       );
 
-      // Get the font scale buttons (+ and -)
-      const buttons = screen.getAllByRole('button');
-      const fontButtons = buttons.filter(btn => 
-        btn.innerHTML.includes('plus') || btn.innerHTML.includes('minus')
-      );
+      // Get the font scale buttons using their test IDs
+      const decreaseFontButton = screen.getByTestId('decrease-font-size');
+      const increaseFontButton = screen.getByTestId('increase-font-size');
 
-      if (fontButtons.length > 0) {
-        fireEvent.click(fontButtons[0]); // Click font scale button
-        
-        // Font scale should have changed in store
-        const state = store.getState();
-        expect(state.fontScale.value).toBeDefined();
-      }
+      // Ensure font buttons exist before testing
+      expect(decreaseFontButton).toBeInTheDocument();
+      expect(increaseFontButton).toBeInTheDocument();
+      
+      fireEvent.click(decreaseFontButton); // Click font scale button
+      
+      // Font scale should have changed in store
+      const state = store.getState();
+      expect(state.fontScale.value).toBeDefined();
     });
 
     it('should update progress when navigating between phrases', () => {
@@ -310,11 +310,15 @@ describe('Component State Changes', () => {
       fireEvent.click(backButton);
 
       expect(onBack).toHaveBeenCalled();
-      
+
       // The sessionStorage should be cleared after back navigation
       // Note: The value might be "0" due to state reset instead of removal
       const sessionValue = sessionStorage.getItem('azkar-index-1');
       expect(sessionValue === null || sessionValue === "0").toBe(true);
+
+      // Additional check: verify store state reset after back navigation
+      const state = store.getState();
+      expect(state.indexCount.value === 0 || state.indexCount.value === undefined).toBe(true);
     });
   });
 
@@ -382,20 +386,19 @@ describe('Component State Changes', () => {
         }
       );
 
-      const themeButtons = screen.getAllByRole('button');
-      // Find a theme button (not back or reset button)
-      const themeButton = themeButtons.find(btn => 
-        !btn.innerHTML.includes('chevron') && 
-        !btn.innerHTML.includes('trash') &&
-        btn.getAttribute('data-theme') !== null
+      // Get theme buttons by their class name
+      const themeButtons = screen.getAllByRole('button').filter(btn => 
+        btn.classList.contains('theme-btn')
       );
 
-      if (themeButton) {
-        fireEvent.click(themeButton);
-        
-        const state = store.getState();
-        expect(state.theme.value).toBeDefined();
-      }
+      // Ensure theme buttons exist before testing
+      expect(themeButtons.length).toBeGreaterThan(0);
+      const themeButton = themeButtons[0]; // Click the first theme button
+      
+      fireEvent.click(themeButton);
+      
+      const state = store.getState();
+      expect(state.theme.value).toBeDefined();
     });
 
     it('should reset total count with confirmation', () => {

@@ -99,6 +99,7 @@ export default function ZekrCard({
               className="font-btn"
               onClick={() => dispatch(decrementFontScale())}
               aria-label="Decrease font size"
+              data-testid="decrease-font-size"
             >
               <MinusIcon />
             </button>
@@ -106,6 +107,7 @@ export default function ZekrCard({
               className="font-btn"
               onClick={() => dispatch(incrementFontScale())}
               aria-label="Increase font size"
+              data-testid="increase-font-size"
             >
               <PlusIcon />
             </button>
