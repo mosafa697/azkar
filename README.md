@@ -6,8 +6,20 @@ The app provides a collection of authentic Azkar categorized for different times
 ## Features
 
 - **Daily Azkar**: Access morning, evening, and other daily supplications.
+- **Category-based Navigation**: Browse azkar by different categories and occasions.
+- **Search Functionality**: Quickly find specific supplications.
+- **Counter & Progress Tracking**: Keep track of your dhikr repetitions.
+- **Multiple Themes**: Choose from various themes including dark mode for comfortable reading.
+- **Font Scaling**: Adjust text size for better readability.
+- **Shuffle Options**: Randomize azkar order for varied experience.
+- **Progressive Web App (PWA)**: Install on your device for app-like experience.
 - **Offline Access**: Use the app without an internet connection.
-- **Simpler UI**: Enjoy an intuitive and easy-to-navigate user interface.
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices.
+- **Animations & Swipe Navigation**: Smooth and intuitive user interactions.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes, new features, and bug fixes.
 
 ## Installation
 
