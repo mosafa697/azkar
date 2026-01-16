@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '../test-utils';
+import { render, screen, fireEvent, waitFor, act } from '../test-utils';
 import CategoryAzkar from '../../components/CategoryAzkar';
 import { mockMappedAzkar } from '../fixtures/mockData';
 
@@ -57,7 +57,9 @@ describe('CategoryAzkar Component', () => {
   });
 
   afterEach(() => {
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
     jest.useRealTimers();
   });
 
@@ -97,7 +99,7 @@ describe('CategoryAzkar Component', () => {
       expect(store.getState().totalCount.value).toBe(1);
     });
 
-    it('should not exceed phrase count', () => {
+    it('should not exceed phrase count', async () => {
       const { store } = render(<CategoryAzkar categoryId={1} onBack={mockOnBack} />);
       
       const phraseElement = screen.getByText(/اللَّهُمَّ بِكَ أَصْبَحْنَا/i);
@@ -109,7 +111,7 @@ describe('CategoryAzkar Component', () => {
       fireEvent.click(phraseElement);
       fireEvent.click(phraseElement);
       
-      waitFor(() => {
+      await waitFor(() => {
         // Total count should only be 3
         expect(store.getState().totalCount.value).toBe(3);
       });
@@ -162,7 +164,9 @@ describe('CategoryAzkar Component', () => {
       fireEvent.click(phraseElement);
       
       // Fast-forward the 300ms timeout
-      jest.advanceTimersByTime(300);
+      act(() => {
+        jest.advanceTimersByTime(300);
+      });
       
       // Should automatically navigate to next phrase
       await waitFor(() => {
@@ -179,7 +183,9 @@ describe('CategoryAzkar Component', () => {
       fireEvent.click(phraseElement);
       fireEvent.click(phraseElement);
       
-      jest.advanceTimersByTime(300);
+      act(() => {
+        jest.advanceTimersByTime(300);
+      });
       
       // Should still be on first phrase
       await waitFor(() => {
@@ -191,14 +197,14 @@ describe('CategoryAzkar Component', () => {
   });
 
   describe('SessionStorage Progress Persistence', () => {
-    it('should save current index to sessionStorage', () => {
+    it('should save current index to sessionStorage', async () => {
       const { store } = render(<CategoryAzkar categoryId={1} onBack={mockOnBack} />);
       
       // Navigate to next phrase
       const nextButton = screen.getByLabelText(/Next phrase/i);
       fireEvent.click(nextButton);
       
-      waitFor(() => {
+      await waitFor(() => {
         expect(sessionStorage.getItem('azkar-index-1')).toBe('1');
       });
     });
@@ -262,7 +268,7 @@ describe('CategoryAzkar Component', () => {
   });
 
   describe('Shuffle Integration', () => {
-    it('should shuffle phrases when shuffle is enabled and not already shuffled', () => {
+    it('should shuffle phrases when shuffle is enabled and not already shuffled', async () => {
       const { store } = render(
         <CategoryAzkar categoryId={1} onBack={mockOnBack} />,
         {
@@ -276,12 +282,12 @@ describe('CategoryAzkar Component', () => {
         }
       );
       
-      waitFor(() => {
+      await waitFor(() => {
         expect(store.getState().phases.wasShuffled).toBe(true);
       });
     });
 
-    it('should not shuffle if already shuffled', () => {
+    it('should not shuffle if already shuffled', async () => {
       const { store } = render(
         <CategoryAzkar categoryId={1} onBack={mockOnBack} />,
         {
@@ -298,12 +304,12 @@ describe('CategoryAzkar Component', () => {
       const initialPhrases = store.getState().phases.value;
       
       // Re-render shouldn't shuffle again
-      waitFor(() => {
+      await waitFor(() => {
         expect(store.getState().phases.value).toEqual(initialPhrases);
       });
     });
 
-    it('should not shuffle when shuffle is disabled', () => {
+    it('should not shuffle when shuffle is disabled', async () => {
       const { store } = render(
         <CategoryAzkar categoryId={1} onBack={mockOnBack} />,
         {
@@ -317,21 +323,21 @@ describe('CategoryAzkar Component', () => {
         }
       );
       
-      waitFor(() => {
+      await waitFor(() => {
         expect(store.getState().phases.wasShuffled).toBe(false);
       });
     });
   });
 
   describe('State Cleanup', () => {
-    it('should reset index on back navigation', () => {
+    it('should reset index on back navigation', async () => {
       const { store } = render(<CategoryAzkar categoryId={1} onBack={mockOnBack} />);
       
       // Navigate to second phrase
       const nextButton = screen.getByLabelText(/Next phrase/i);
       fireEvent.click(nextButton);
       
-      waitFor(() => {
+      await waitFor(() => {
         expect(store.getState().indexCount.value).toBe(1);
       });
       
@@ -356,7 +362,7 @@ describe('CategoryAzkar Component', () => {
   });
 
   describe('Phrase Navigation', () => {
-    it('should set isLastPhrase flag correctly', () => {
+    it('should set isLastPhrase flag correctly', async () => {
       const { store } = render(<CategoryAzkar categoryId={1} onBack={mockOnBack} />);
       
       expect(store.getState().indexCount.isLastPhrase).toBe(false);
@@ -366,7 +372,7 @@ describe('CategoryAzkar Component', () => {
       fireEvent.click(nextButton);
       fireEvent.click(nextButton);
       
-      waitFor(() => {
+      await waitFor(() => {
         expect(store.getState().indexCount.isLastPhrase).toBe(true);
       });
     });
@@ -394,7 +400,7 @@ describe('CategoryAzkar Component', () => {
   });
 
   describe('Edge Cases', () => {
-    it('should handle rapid clicks correctly', () => {
+    it('should handle rapid clicks correctly', async () => {
       const { store } = render(<CategoryAzkar categoryId={1} onBack={mockOnBack} />);
       
       const phraseElement = screen.getByText(/اللَّهُمَّ بِكَ أَصْبَحْنَا/i);
@@ -404,7 +410,7 @@ describe('CategoryAzkar Component', () => {
         fireEvent.click(phraseElement);
       }
       
-      waitFor(() => {
+      await waitFor(() => {
         // Should max out at phrase count (3)
         expect(store.getState().totalCount.value).toBeLessThanOrEqual(3);
       });
