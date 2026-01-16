@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { azkar } from "../mappers/azkarMapper";
-import { ToothIcon } from "../icons/iconRepo";
 
 export default function Categories({ onCategorySelect, onOpenSettings }) {
   const [searchQuery, setSearchQuery] = useState("");
