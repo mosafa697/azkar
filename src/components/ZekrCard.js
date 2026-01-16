@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { incrementIndex, decrementIndex } from "../store/indexCountSlice.js";
@@ -22,6 +22,7 @@ import { useSwipeable } from "react-swipeable";
 const SWIPE_DAMPENING = 0.5;
 const SWIPE_ANIMATION_DURATION = 200;
 const SWIPE_THRESHOLD = 50;
+const LONG_PRESS_DURATION = 600;
 
 // Custom hook for swipe functionality
 const useSwipeNavigation = (dispatch) => {
@@ -73,6 +74,8 @@ export default function ZekrCard({
   const indexCount = useSelector((state) => state.indexCount.value);
   const phasesLength = useSelector((state) => state.indexCount.phasesLength);
   const showSubText = useSelector((state) => state.subText.value);
+  const longPressTimerRef = useRef(null);
+  const [longPressTriggered, setLongPressTriggered] = useState(false);
 
   const { swipeOffset, isSwipeAnimating, swipeHandlers } =
     useSwipeNavigation(dispatch);
@@ -82,9 +85,57 @@ export default function ZekrCard({
     navigate("/settings");
   };
 
+  const copyTextToClipboard = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.top = "-1000px";
+        document.body.appendChild(textArea);
+        textArea.focus({ preventScroll: true });
+        textArea.select();
+        try {
+          document.execCommand("copy");
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+    } catch (_) {}
+  };
+
+  const startLongPress = () => {
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current);
+    }
+    longPressTimerRef.current = setTimeout(async () => {
+      setLongPressTriggered(true);
+      await copyTextToClipboard(phrase.text);
+    }, LONG_PRESS_DURATION);
+  };
+
+  const cancelLongPress = () => {
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current);
+      longPressTimerRef.current = null;
+    }
+  };
+
+  const handleContentClick = (e) => {
+    if (longPressTriggered) {
+      e.preventDefault();
+      e.stopPropagation();
+      setLongPressTriggered(false);
+      return;
+    }
+    onPhraseClick();
+  };
+
   // Helper functions
   const progressPercentage = (indexCount / phasesLength) * 100;
-  const remainingCount = phrase.count - counter;
+  const remainingCount = phrase.count - counter || 1;
   const canGoBack = indexCount > 0;
   const canGoForward = !isLastPhrase;
   const showSwipeIndicator = Math.abs(swipeOffset) > SWIPE_THRESHOLD;
@@ -137,7 +188,12 @@ export default function ZekrCard({
         </div>
         <div
           className="content-container"
-          onClick={onPhraseClick}
+          onClick={handleContentClick}
+          onPointerDown={startLongPress}
+          onPointerUp={cancelLongPress}
+          onPointerLeave={cancelLongPress}
+          onPointerCancel={cancelLongPress}
+          onPointerMove={cancelLongPress}
           {...swipeHandlers}
           style={{
             transform: `translateX(${swipeOffset}px)`,
