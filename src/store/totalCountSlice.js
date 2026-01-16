@@ -1,23 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getNumberItem, setNumberItem } from "../utils/localStorage";
 
-// Helper function to load count from localStorage
+// Helper function to load count from localStorage with enhanced error handling
 const loadTotalCountFromStorage = () => {
-  try {
-    const savedCount = localStorage.getItem("azkarTotalCount");
-    return savedCount ? parseInt(savedCount, 10) : 0;
-  } catch (error) {
-    console.error("Error loading total count from localStorage:", error);
-    return 0;
-  }
+  return getNumberItem("azkarTotalCount", 0);
 };
 
-// Helper function to save count to localStorage
+// Helper function to save count to localStorage with enhanced error handling
 const saveTotalCountToStorage = (count) => {
-  try {
-    localStorage.setItem("azkarTotalCount", count.toString());
-  } catch (error) {
-    console.error("Error saving total count to localStorage:", error);
-  }
+  setNumberItem("azkarTotalCount", count);
 };
 
 const initialState = {

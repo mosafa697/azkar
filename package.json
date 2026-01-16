@@ -1,6 +1,6 @@
 {
   "name": "azkar",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.7.0",
@@ -16,10 +16,16 @@
     "react-swipeable": "^7.0.2",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "jest-axe": "^8.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
+    "test:ci": "CI=true react-scripts test --coverage --passWithNoTests",
+    "test:debug": "react-scripts test --no-cache --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -38,6 +44,32 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/serviceWorker.js",
+      "!src/serviceWorkerRegistration.js",
+      "!src/reportWebVitals.js",
+      "!src/setupTests.js",
+      "!src/**/*.test.js",
+      "!src/tests/**/*",
+      "!src/__mocks__/**/*"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
     ]
   }
 }

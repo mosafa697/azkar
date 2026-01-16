@@ -12,9 +12,6 @@ export default function Categories({ onCategorySelect, onOpenSettings }) {
   return (
     <div className="container">
       <div className="card">
-        <button className="setting-btn" onClick={onOpenSettings}>
-          <ToothIcon />
-        </button>
         <div className="card-header">
           <p>
             قال الله تعالى:{" "}
@@ -29,7 +26,7 @@ export default function Categories({ onCategorySelect, onOpenSettings }) {
             <b>
             يقولُ اللَّهُ تَعالَى: أنا عِنْدَ ظَنِّ عَبْدِي بي، وأنا معهُ إذا ذَكَرَنِي، فإنْ ذَكَرَنِي في نَفْسِهِ ذَكَرْتُهُ في نَفْسِي، وإنْ ذَكَرَنِي في مَلَإٍ ذَكَرْتُهُ في مَلَإٍ خَيْرٍ منهمْ
             </b>
-            . صحيح البخاري 7405 .
+            . صحيح البخاري 7405.
           </p>
         </div>
         <div className="search-bar">
@@ -47,6 +44,7 @@ export default function Categories({ onCategorySelect, onOpenSettings }) {
               key={category.id}
               className="category-btn"
               onClick={() => onCategorySelect(category.id)}
+              tabIndex="0"
             >
               {category.title}
             </button>
