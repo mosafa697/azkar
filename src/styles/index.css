@@ -1,3 +1,9 @@
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font face for ScheherazadeNew */
 @font-face {
   font-family: "ScheherazadeNew";
   src: url("./fonts/ScheherazadeNew.ttf") format("truetype");
@@ -5,19 +11,92 @@
   font-style: normal;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "ScheherazadeNew", "Cairo", sans-serif;
-  direction: rtl;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* CSS Variables for three-theme system */
+:root {
+  /* Default solarized theme colors */
+  --bg-color: #f8ede0;
+  --button-bg-color: #f8ede0;
+  --button-border-color: #93a1a1;
+  --button-hover-bg-color: #d3d3d3;
+  --card-bg-color: #fff9f4;
+  --icon-color: #00753a;
+  --icon-color-active: #ffffff;
+  --secondary-bg-color: #f8ede0;
+  --secondary-text-color: #657b83;
+  --slider-bg: #f8ede0;
+  --slider-bg-active: #00753a;
+  --text-color: #363739;
 }
 
-code {
-  font-family: "ScheherazadeNew", source-code-pro, Menlo, Monaco, Consolas,
-    "Courier New", monospace;
+:root.light {
+  --bg-color: #fefefe;
+  --button-bg-color: #f9fafb;
+  --button-border-color: #e5e7eb;
+  --button-hover-bg-color: #f3f4f6;
+  --card-bg-color: #ffffff;
+  --icon-color: #575b63;
+  --icon-color-active: #ffffff;
+  --secondary-bg-color: #f9fafb;
+  --secondary-text-color: #6b7280;
+  --slider-bg: #f0f0f0;
+  --slider-bg-active: #3b82f6;
+  --text-color: #111827;
+}
+
+:root.dark {
+  --bg-color: #1e293b;
+  --button-bg-color: #475569;
+  --button-border-color: #64748b;
+  --button-hover-bg-color: #1e293b;
+  --card-bg-color: #334155;
+  --icon-color: #dcebff;
+  --icon-color-active: #ffffff;
+  --secondary-bg-color: #475569;
+  --secondary-text-color: #94a3b8;
+  --slider-bg: #64748b;
+  --slider-bg-active: #2563eb;
+  --text-color: #f8fafc;
+}
+
+:root.solarized {
+  --bg-color: #f8ede0;
+  --button-bg-color: #f8ede0;
+  --button-border-color: #93a1a1;
+  --button-hover-bg-color: #d3d3d3;
+  --card-bg-color: #fff9f4;
+  --icon-color: #00753a;
+  --icon-color-active: #ffffff;
+  --secondary-bg-color: #f8ede0;
+  --secondary-text-color: #657b83;
+  --slider-bg: #f8ede0;
+  --slider-bg-active: #00753a;
+  --text-color: #363739;
+}
+
+/* Global styles */
+@layer base {
+  html {
+    direction: rtl;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "ScheherazadeNew", "Cairo", sans-serif;
+    direction: rtl;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  code {
+    font-family: "ScheherazadeNew", source-code-pro, Menlo, Monaco, Consolas,
+      "Courier New", monospace;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
 }
