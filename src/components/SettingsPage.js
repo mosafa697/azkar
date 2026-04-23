@@ -81,7 +81,7 @@ export default function SettingsPage({ onBack }) {
                 aria-label="تبديل ترتيب الأذكار"
                 className="h-0 w-0 opacity-0"
               />
-              <span className="absolute flex items-center justify-center rounded-full h-7 w-12 bg-[var(--slider-bg)] cursor-pointer transition-all duration-400 tap-highlight-none peer-checked:bg-[var(--slider-bg-active)]">
+              <span className="absolute flex items-center justify-center rounded-full h-7 w-12 bg-[var(--slider-bg)] cursor-pointer transition-colors duration-400 tap-highlight-none peer-checked:bg-[var(--slider-bg-active)]">
                 {shuffle ? <OrderedIcon /> : <ShuffleIcon />}
               </span>
             </label>
@@ -96,7 +96,7 @@ export default function SettingsPage({ onBack }) {
                 aria-label="تبديل إظهار فضل الذكر"
                 className="h-0 w-0 opacity-0"
               />
-              <span className="absolute flex items-center justify-center rounded-full h-7 w-12 bg-[var(--slider-bg)] cursor-pointer transition-all duration-400 tap-highlight-none peer-checked:bg-[var(--slider-bg-active)]">
+              <span className="absolute flex items-center justify-center rounded-full h-7 w-12 bg-[var(--slider-bg)] cursor-pointer transition-colors duration-400 tap-highlight-none peer-checked:bg-[var(--slider-bg-active)]">
                 {showSubText ? <EyeSlashIcon /> : <EyeIcon />}
               </span>
             </label>

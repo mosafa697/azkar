@@ -131,7 +131,7 @@ Migrate from custom CSS (App.css, index.css) to Tailwind CSS or Bootstrap while 
 
 ## Blockers & Considerations
 
-- [ ] Ensure Tailwind/Bootstrap don't conflict with existing index.css global styles
-- [ ] Verify theme switching doesn't have race conditions
-- [ ] Check mobile responsiveness on actual devices, not just browser dev tools
-- [ ] Consider performance impact of theme switching animations
+- [x] Ensure Tailwind/Bootstrap don't conflict with existing index.css global styles
+- [x] Verify theme switching doesn't have race conditions
+- [x] Check mobile responsiveness on actual devices, not just browser dev tools
+- [x] Consider performance impact of theme switching animations

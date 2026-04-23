@@ -9,8 +9,8 @@ export default function Categories({ onCategorySelect, onOpenSettings }) {
   );
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[var(--bg-color)] px-8">
-      <div className="flex flex-col gap-6 bg-[var(--card-bg-color)] rounded-2xl shadow-lg text-[var(--text-color)] max-w-md min-h-1/2 p-8 w-full text-center">
+    <div className="flex items-center justify-center min-h-screen bg-[var(--bg-color)] px-4 md:px-8">
+      <div className="flex flex-col gap-6 bg-[var(--card-bg-color)] rounded-2xl shadow-lg text-[var(--text-color)] max-w-md min-h-1/2 p-4 md:p-8 w-full text-center">
         <div className="text-[2.3dvh]">
           <p>
             قال الله تعالى:{" "}

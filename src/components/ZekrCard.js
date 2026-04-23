@@ -147,7 +147,7 @@ export default function ZekrCard({
         <div className="flex items-center justify-between flex-shrink-0">
           <div className="flex gap-2">
             <button
-              className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-1 px-1.5 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]"
+              className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-2 px-3 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] min-h-[44px] min-w-[44px]"
               onClick={() => dispatch(decrementFontScale())}
               aria-label="Decrease font size"
               data-testid="decrease-font-size"
@@ -155,7 +155,7 @@ export default function ZekrCard({
               <MinusIcon />
             </button>
             <button
-              className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-1 px-1.5 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]"
+              className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-2 px-3 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] min-h-[44px] min-w-[44px]"
               onClick={() => dispatch(incrementFontScale())}
               aria-label="Increase font size"
               data-testid="increase-font-size"
@@ -167,7 +167,7 @@ export default function ZekrCard({
           </div>
           <div className="bg-[var(--secondary-bg-color)] border border-[var(--button-border-color)] rounded-lg overflow-hidden h-2.5 w-[20dvh]">
             <div
-              className="bg-[var(--icon-color)] h-full transition-all duration-300 ease-in-out w-[var(--progress-width)]"
+              className="bg-[var(--icon-color)] h-full transition-width duration-300 ease-in-out w-[var(--progress-width)] gpu-accelerate"
               style={{ "--progress-width": `${progressPercentage}%` }}
               role="progressbar"
               aria-valuenow={indexCount}

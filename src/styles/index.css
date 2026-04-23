@@ -3,6 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom utilities for performance */
+@layer utilities {
+  .gpu-accelerate {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+}
+
 /* Font face for ScheherazadeNew */
 @font-face {
   font-family: "ScheherazadeNew";

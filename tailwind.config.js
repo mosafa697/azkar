@@ -4,6 +4,13 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        'xs': '375px',   // iPhone SE
+        'sm': '640px',   // Current default
+        'md': '768px',   // iPad portrait
+        'lg': '1024px',  // iPad landscape
+        'landscape': { 'raw': '(orientation: landscape)' },
+      },
       fontFamily: {
         scheherazade: ['ScheherazadeNew', 'serif'],
       },
