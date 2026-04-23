@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        scheherazade: ['ScheherazadeNew', 'serif'],
+      },
       // Theme color definitions for light/solarized/dark
       colors: {
         light: {
