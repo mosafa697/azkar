@@ -66,19 +66,19 @@ Migrate from custom CSS (App.css, index.css) to Tailwind CSS or Bootstrap while 
 
 ## Phase 3: Dynamic & Inline Styles
 
-- [ ] **3.1** Font scaling (`fontSize: ${fontScale}dvh`)
-  - [ ] Keep as inline style OR convert to Tailwind arbitrary values
-  - [ ] Test across all font scale settings (1.4-4.0)
+- [x] **3.1** Font scaling (`fontSize: ${fontScale}dvh`)
+  - [x] Keep as inline style OR convert to Tailwind arbitrary values
+  - [x] Test across all font scale settings (1.4-4.0)
   
-- [ ] **3.2** Swipe transforms and transitions
-  - [ ] Keep inline for performance
-  - [ ] Verify transform: translateX() works with framework
+- [x] **3.2** Swipe transforms and transitions
+  - [x] Keep inline for performance
+  - [x] Verify transform: translateX() works with framework
   
-- [ ] **3.3** Progress bar percentage width
-  - [ ] Convert to utility class with dynamic calculation
+- [x] **3.3** Progress bar percentage width
+  - [x] Convert to utility class with dynamic calculation
   
-- [ ] **3.4** Visibility/display toggles
-  - [ ] Use framework utilities (hidden, block, etc.) with conditional classes
+- [x] **3.4** Visibility/display toggles
+  - [x] Use framework utilities (hidden, block, etc.) with conditional classes
 
 ---
 

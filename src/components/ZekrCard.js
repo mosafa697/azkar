@@ -162,13 +162,13 @@ export default function ZekrCard({
             >
               <PlusIcon />
             </button>
-            <button style={{ visibility: "hidden" }}></button>
+            <button className="invisible"></button>
             {/* TODO: find another way */}
           </div>
           <div className="bg-[var(--secondary-bg-color)] border border-[var(--button-border-color)] rounded-lg overflow-hidden h-2.5 w-[20dvh]">
             <div
-              className="bg-[var(--icon-color)] h-full transition-all duration-300 ease-in-out"
-              style={{ width: `${progressPercentage}%` }}
+              className="bg-[var(--icon-color)] h-full transition-all duration-300 ease-in-out w-[var(--progress-width)]"
+              style={{ "--progress-width": `${progressPercentage}%` }}
               role="progressbar"
               aria-valuenow={indexCount}
               aria-valuemax={phasesLength}
@@ -236,9 +236,8 @@ export default function ZekrCard({
         </div>
         <div className="flex justify-between">
           <button
-            className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-0.5 px-1 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center"
+            className={`flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-0.5 px-1 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoBack ? "" : "invisible"}`}
             onClick={() => dispatch(decrementIndex())}
-            style={{ visibility: canGoBack ? "visible" : "hidden" }}
             aria-label="Previous phrase"
           >
             <ChevronRightIcon />
@@ -251,9 +250,8 @@ export default function ZekrCard({
           />
 
           <button
-            className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-0.5 px-1 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center"
+            className={`flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-0.5 px-1 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoForward ? "" : "invisible"}`}
             onClick={() => dispatch(incrementIndex())}
-            style={{ visibility: canGoForward ? "visible" : "hidden" }}
             aria-label="Next phrase"
           >
             <ChevronLeftIcon />
