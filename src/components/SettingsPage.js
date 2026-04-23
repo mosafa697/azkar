@@ -37,20 +37,20 @@ export default function SettingsPage({ onBack }) {
   }, [theme, themeList]);
 
   return (
-    <div className="container">
-      <div className="card">
-        <div className="card-setting-header">
-          <button className="back-btn" onClick={onBack} aria-label="الرجوع">
+    <div className="flex items-center justify-center min-h-screen bg-[var(--bg-color)] px-8">
+      <div className="flex flex-col gap-6 bg-[var(--card-bg-color)] rounded-2xl shadow-lg text-[var(--text-color)] max-w-md min-h-1/2 p-8 w-full text-center">
+        <div className="flex justify-start items-center p-2 text-[2.6dvh] text-[var(--text-color)] direction-ltr">
+          <button className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-1 px-1.5 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]" onClick={onBack} aria-label="الرجوع">
             <ChevronLeftIcon />
           </button>
         </div>
-        <div className="setting-card">
-          <div className="setting-item">
-            <span className="setting-label">سمة النظام</span>
-            <div className="slider">
+        <div className="bg-[var(--card-bg-color)] rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.08)] flex flex-col gap-6 p-6">
+          <div className="flex items-center justify-between">
+            <span className="text-[var(--text-color)]">سمة النظام</span>
+            <div className="flex items-center justify-center gap-2">
               {themeList.map((name) => (
                 <button
-                  className="theme-btn"
+                  className="flex items-center justify-center rounded-full p-2 bg-transparent cursor-pointer tap-highlight-none"
                   style={{
                     border: `2px solid ${
                       theme === name
@@ -71,45 +71,47 @@ export default function SettingsPage({ onBack }) {
               ))}
             </div>
           </div>
-          <div className="setting-item">
-            <span className="setting-label">ترتيب الأذكار</span>
-            <label className="switch">
+          <div className="flex items-center justify-between">
+            <span className="text-[var(--text-color)]">ترتيب الأذكار</span>
+            <label className="relative flex h-7 w-12 cursor-pointer tap-highlight-none">
               <input
                 type="checkbox"
                 checked={shuffle}
                 onChange={() => dispatch(toggleShuffle())}
                 aria-label="تبديل ترتيب الأذكار"
+                className="h-0 w-0 opacity-0"
               />
-              <span className="slider">
+              <span className="absolute flex items-center justify-center rounded-full h-7 w-12 bg-[var(--slider-bg)] cursor-pointer transition-all duration-400 tap-highlight-none peer-checked:bg-[var(--slider-bg-active)]">
                 {shuffle ? <OrderedIcon /> : <ShuffleIcon />}
               </span>
             </label>
           </div>
-          <div className="setting-item">
-            <span className="setting-label">إظهار فضل الذكر</span>
-            <label className="switch">
+          <div className="flex items-center justify-between">
+            <span className="text-[var(--text-color)]">إظهار فضل الذكر</span>
+            <label className="relative flex h-7 w-12 cursor-pointer tap-highlight-none">
               <input
                 type="checkbox"
                 checked={Boolean(showSubText)}
                 onChange={() => dispatch(toggleAppearance())}
                 aria-label="تبديل إظهار فضل الذكر"
+                className="h-0 w-0 opacity-0"
               />
-              <span className="slider">
+              <span className="absolute flex items-center justify-center rounded-full h-7 w-12 bg-[var(--slider-bg)] cursor-pointer transition-all duration-400 tap-highlight-none peer-checked:bg-[var(--slider-bg-active)]">
                 {showSubText ? <EyeSlashIcon /> : <EyeIcon />}
               </span>
             </label>
           </div>
-          <div className="setting-item">
-            <span className="setting-label">إجمالي الأذكار</span>
-            <div className="total-count-container">
+          <div className="flex items-center justify-between">
+            <span className="text-[var(--text-color)]">إجمالي الأذكار</span>
+            <div className="flex items-center gap-3">
               <button
-                className="reset-btn"
+                className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer p-1 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]"
                 onClick={handleResetTotalCount}
                 title="إعادة تعيين العداد"
               >
                 <TrashIcon />
               </button>
-              <span className="total-count-number">
+              <span className="text-base font-bold text-[var(--icon-color)] py-1 px-2 bg-[var(--secondary-bg-color)] rounded-lg w-12 text-center">
                 {totalCount.toLocaleString()}
               </span>
             </div>

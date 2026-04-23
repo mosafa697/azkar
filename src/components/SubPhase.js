@@ -6,11 +6,11 @@ const SubPhrase = ({ subPhraseText }) => {
 
   return (
     <div>
-      <hr />
+      <hr className="border-[var(--button-border-color)] my-4" />
       <h5
-        className="sub-phrase"
+        className="text-[var(--secondary-text-color)] text-center tap-highlight-none"
         style={{
-          fontScale: `${fontScale - 0.5}vh`,
+          fontSize: `${fontScale - 0.5}dvh`,
           whiteSpace: "pre-line",
         }}
       >
