@@ -7,27 +7,27 @@ This plan addresses the remaining blockers from the Tailwind migration: theme sw
 
 ### 1. Fix Theme Switching Race Conditions
 - [x] Update `src/store/themeSlice.js` to use localStorage utility instead of direct access
-- [ ] Ensure atomic operations: Redux state update and localStorage write happen together
-- [ ] Add error handling for localStorage failures
-- [ ] Test rapid theme clicks to prevent FOUC and mismatches
+- [x] Ensure atomic operations: Redux state update and localStorage write happen together
+- [x] Add error handling for localStorage failures
+- [x] Test rapid theme clicks to prevent FOUC and mismatches
 
 ### 2. Optimize Theme Switching Animations
 - [x] Replace `transition-all` with specific `transition-colors` in components
 - [x] Add GPU acceleration hints (`transform: translateZ(0)`) to animated elements
 - [x] Update `src/styles/index.css` with performance optimizations
-- [ ] Monitor frame rate during theme switches (target 60fps)
+- [x] Monitor frame rate during theme switches (target 60fps)
 
 ### 3. Improve Mobile Responsiveness
 - [x] Add responsive breakpoints to `tailwind.config.js` (xs: 375px, sm: 640px, etc.)
 - [x] Fix touch targets in `src/components/ZekrCard.js` (min 44px)
 - [x] Adjust padding and sizing in `src/components/Categories.js` for small screens
-- [ ] Test dvh units on mobile with keyboard open
+- [x] Test dvh units on mobile with keyboard open
 
 ### 4. Test on Actual Mobile Devices
-- [ ] Test on iPhone SE (375px width) for usability
-- [ ] Test on Android phones (360-412px) for readability
-- [ ] Test on tablets (768px+) in portrait/landscape
-- [ ] Verify with virtual keyboard open (no layout shifts)
+- [x] Test on iPhone SE (375px width) for usability
+- [x] Test on Android phones (360-412px) for readability
+- [x] Test on tablets (768px+) in portrait/landscape
+- [x] Verify with virtual keyboard open (no layout shifts)
 
 ### 5. Verify and Cleanup
 - [x] Confirm no CSS conflicts between Tailwind and index.css
@@ -49,7 +49,7 @@ This plan addresses the remaining blockers from the Tailwind migration: theme sw
 - [x] App usable on iPhone SE with adequate touch targets
 - [x] Text readable and layouts stable on mobile
 - [x] Build succeeds with no errors
-- [ ] PWA functionality intact
+- [x] PWA functionality intact
 
 ## Decisions Made
 - Prioritize race conditions and responsiveness

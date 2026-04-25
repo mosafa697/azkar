@@ -11,8 +11,12 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     setTheme: (state, action) => {
-      state.value = action.payload;
-      setItem("theme", state.value);
+      const success = setItem("theme", action.payload);
+      if (success) {
+        state.value = action.payload;
+      } else {
+        console.warn("Failed to persist theme to localStorage, state not updated");
+      }
     },
   },
 });
