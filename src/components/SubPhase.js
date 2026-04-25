@@ -6,7 +6,6 @@ const SubPhrase = ({ subPhraseText }) => {
 
   return (
     <div>
-      <hr className="border-[var(--button-border-color)] my-4" />
       <h5
         className="text-[var(--secondary-text-color)] text-center tap-highlight-none"
         style={{

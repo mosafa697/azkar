@@ -187,7 +187,7 @@ export default function ZekrCard({
           </div>
         </div>
         <div
-          className="flex flex-col items-center flex-grow h-screen py-[2dvh] px-[2dvh] overflow-y-auto break-words"
+          className="flex flex-col items-center justify-center flex-grow h-screen py-[2dvh] px-[2dvh] overflow-y-auto break-words"
           onClick={handleContentClick}
           onPointerDown={startLongPress}
           onPointerUp={cancelLongPress}
@@ -221,15 +221,20 @@ export default function ZekrCard({
             />
           )}
 
-          <h2
-            className="text-[var(--text-color)] cursor-pointer leading-loose my-0 mb-5 py-[3dvh] text-center transition-colors duration-300 tap-highlight-none"
-            style={{
-              fontSize: `${fontScale}dvh`,
-              whiteSpace: "pre-line",
-            }}
-          >
-            {phrase.text}
-          </h2>
+          <div className="inline-block text-center">
+            <h2
+              className="text-[var(--text-color)] cursor-pointer leading-loose my-0 mb-5 py-[3dvh] text-center transition-colors duration-300 tap-highlight-none"
+              style={{
+                fontSize: `${fontScale}dvh`,
+                whiteSpace: "pre-line",
+              }}
+            >
+              {phrase.text}
+            </h2>
+          </div>
+          {showSubText && (
+            <hr className="border-[var(--button-border-color)] my-4 w-full" />
+          )}
           {showSubText && phrase.subtext && (
             <SubPhrase subPhraseText={phrase.subtext} />
           )}
