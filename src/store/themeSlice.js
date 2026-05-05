@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getItem, setItem } from "../utils/localStorage";
 
 const initialState = {
-  value: localStorage.getItem("theme") || "solarized",
+  value: getItem("theme", "solarized"),
   list: ["light", "solarized", "dark"],
 };
 
@@ -9,10 +10,13 @@ const themeSlice = createSlice({
   name: "theme",
   initialState,
   reducers: {
-    setTheme: (state, index) => {
-      state.value = index.payload;
-
-      localStorage.setItem("theme", state.value);
+    setTheme: (state, action) => {
+      const success = setItem("theme", action.payload);
+      if (success) {
+        state.value = action.payload;
+      } else {
+        console.warn("Failed to persist theme to localStorage, state not updated");
+      }
     },
   },
 });

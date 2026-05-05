@@ -141,13 +141,13 @@ export default function ZekrCard({
   const showSwipeIndicator = Math.abs(swipeOffset) > SWIPE_THRESHOLD;
 
   return (
-    <div className="zekr-container">
-      <div className="zekr-card">
+    <div className="flex items-center justify-center min-h-screen bg-[var(--bg-color)] p-4">
+      <div className="flex flex-col gap-6 bg-[var(--card-bg-color)] rounded-2xl shadow-lg text-[var(--text-color)] max-h-screen max-w-md overflow-y-auto p-4 w-full">
         {/* Controls Header */}
-        <div className="controls-container">
-          <div className="font-controls">
+        <div className="flex items-center justify-between flex-shrink-0">
+          <div className="flex gap-2">
             <button
-              className="font-btn"
+              className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-2 px-3 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] min-h-[44px] min-w-[44px]"
               onClick={() => dispatch(decrementFontScale())}
               aria-label="Decrease font size"
               data-testid="decrease-font-size"
@@ -155,20 +155,20 @@ export default function ZekrCard({
               <MinusIcon />
             </button>
             <button
-              className="font-btn"
+              className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-2 px-3 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] min-h-[44px] min-w-[44px]"
               onClick={() => dispatch(incrementFontScale())}
               aria-label="Increase font size"
               data-testid="increase-font-size"
             >
               <PlusIcon />
             </button>
-            <button style={{ visibility: "hidden" }}></button>
+            <button className="invisible"></button>
             {/* TODO: find another way */}
           </div>
-          <div className="counter-container">
+          <div className="bg-[var(--secondary-bg-color)] border border-[var(--button-border-color)] rounded-lg overflow-hidden h-2.5 w-[20dvh]">
             <div
-              className="counter-bar"
-              style={{ width: `${progressPercentage}%` }}
+              className="bg-[var(--icon-color)] h-full transition-width duration-300 ease-in-out w-[var(--progress-width)] gpu-accelerate"
+              style={{ "--progress-width": `${progressPercentage}%` }}
               role="progressbar"
               aria-valuenow={indexCount}
               aria-valuemax={phasesLength}
@@ -176,18 +176,18 @@ export default function ZekrCard({
             />
           </div>
 
-          <div className="option-controls">
+          <div className="flex gap-2">
             <button style={{ visibility: "hidden" }}></button>
-            <button className="card-setting-btn" onClick={handleSettingsClick} aria-label="فتح إعدادات الذكر">
+            <button className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-1 px-1.5 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]" onClick={handleSettingsClick} aria-label="فتح إعدادات الذكر">
               <ToothIcon />
             </button>
-            <button className="back-btn" onClick={onBack} aria-label="الرجوع للصفحة الرئيسية">
+            <button className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-1 px-1.5 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]" onClick={onBack} aria-label="الرجوع للصفحة الرئيسية">
               <HomeIcon />
             </button>
           </div>
         </div>
         <div
-          className="content-container"
+          className="flex flex-col items-center justify-center flex-grow h-screen py-[2dvh] px-[2dvh] overflow-y-auto break-words"
           onClick={handleContentClick}
           onPointerDown={startLongPress}
           onPointerUp={cancelLongPress}
@@ -221,24 +221,28 @@ export default function ZekrCard({
             />
           )}
 
-          <h2
-            className="phrase"
-            style={{
-              fontSize: `${fontScale}dvh`,
-              whiteSpace: "pre-line",
-            }}
-          >
-            {phrase.text}
-          </h2>
+          <div className="inline-block text-center">
+            <h2
+              className="text-[var(--text-color)] cursor-pointer leading-loose my-0 mb-5 py-[3dvh] text-center transition-colors duration-300 tap-highlight-none"
+              style={{
+                fontSize: `${fontScale}dvh`,
+                whiteSpace: "pre-line",
+              }}
+            >
+              {phrase.text}
+            </h2>
+          </div>
+          {showSubText && (
+            <hr className="border-[var(--button-border-color)] my-4 w-full" />
+          )}
           {showSubText && phrase.subtext && (
             <SubPhrase subPhraseText={phrase.subtext} />
           )}
         </div>
-        <div className="buttons-container">
+        <div className="flex justify-between">
           <button
-            className="switch-btn"
+            className={`flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-0.5 px-1 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoBack ? "" : "invisible"}`}
             onClick={() => dispatch(decrementIndex())}
-            style={{ visibility: canGoBack ? "visible" : "hidden" }}
             aria-label="Previous phrase"
           >
             <ChevronRightIcon />
@@ -251,9 +255,8 @@ export default function ZekrCard({
           />
 
           <button
-            className="switch-btn"
+            className={`flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-0.5 px-1 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoForward ? "" : "invisible"}`}
             onClick={() => dispatch(incrementIndex())}
-            style={{ visibility: canGoForward ? "visible" : "hidden" }}
             aria-label="Next phrase"
           >
             <ChevronLeftIcon />
