@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-*No unreleased changes yet.*
+### Added - Recent Enhancements
+- Refactored styling to Tailwind CSS and removed legacy `src/styles/App.css`
+  - Updated `tailwind.config.js` and consolidated styles in `src/styles/index.css`
+  - Applied styling updates across `AzkarApp`, `Categories`, `ContactMe`, `SettingsPage`, `SubPhase`, `ZekrCard`, and `ZekrCounter`
+
+### Fixed - Recent Bug Fixes
+- Corrected `remainingCount` calculation to avoid defaulting to `1`
 
 ## [0.2.0] - 2025-11-01
 
