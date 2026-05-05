@@ -135,7 +135,7 @@ export default function ZekrCard({
 
   // Helper functions
   const progressPercentage = (indexCount / phasesLength) * 100;
-  const remainingCount = phrase.count - counter || 1;
+  const remainingCount = phrase.count - counter;
   const canGoBack = indexCount > 0;
   const canGoForward = !isLastPhrase;
   const showSwipeIndicator = Math.abs(swipeOffset) > SWIPE_THRESHOLD;
