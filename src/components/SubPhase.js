@@ -9,7 +9,7 @@ const SubPhrase = ({ subPhraseText }) => {
       <h5
         className="text-[var(--secondary-text-color)] text-center tap-highlight-none"
         style={{
-          fontSize: `${fontScale - 0.5}dvh`,
+          fontSize: `${fontScale - 0.8}dvh`,
           whiteSpace: "pre-line",
         }}
       >
