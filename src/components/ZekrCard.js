@@ -141,13 +141,13 @@ export default function ZekrCard({
   const showSwipeIndicator = Math.abs(swipeOffset) > SWIPE_THRESHOLD;
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[var(--bg-color)] p-4">
-      <div className="flex flex-col gap-6 bg-[var(--card-bg-color)] rounded-2xl shadow-lg text-[var(--text-color)] max-h-screen max-w-md overflow-y-auto p-4 w-full">
+    <div className="flex items-center justify-center h-screen bg-[var(--bg-color)] p-4">
+      <div className="flex flex-col gap-6 bg-[var(--card-bg-color)] rounded-2xl shadow-lg text-[var(--text-color)] h-full max-h-full max-w-md overflow-hidden p-4 w-full">
         {/* Controls Header */}
         <div className="flex items-center justify-between flex-shrink-0">
           <div className="flex gap-2">
             <button
-              className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-2 px-3 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] min-h-[44px] min-w-[44px]"
+              className="flex items-center justify-center h-11 w-11 bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]"
               onClick={() => dispatch(decrementFontScale())}
               aria-label="Decrease font size"
               data-testid="decrease-font-size"
@@ -155,7 +155,7 @@ export default function ZekrCard({
               <MinusIcon />
             </button>
             <button
-              className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-2 px-3 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] min-h-[44px] min-w-[44px]"
+              className="flex items-center justify-center h-11 w-11 bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]"
               onClick={() => dispatch(incrementFontScale())}
               aria-label="Increase font size"
               data-testid="increase-font-size"
@@ -177,17 +177,17 @@ export default function ZekrCard({
           </div>
 
           <div className="flex gap-2">
-            <button style={{ visibility: "hidden" }}></button>
-            <button className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-1 px-1.5 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]" onClick={handleSettingsClick} aria-label="فتح إعدادات الذكر">
+            <button className="invisible"></button>
+            <button className="flex items-center justify-center h-11 w-11 bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]" onClick={handleSettingsClick} aria-label="فتح إعدادات الذكر">
               <ToothIcon />
             </button>
-            <button className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-1 px-1.5 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]" onClick={onBack} aria-label="الرجوع للصفحة الرئيسية">
+            <button className="flex items-center justify-center h-11 w-11 bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]" onClick={onBack} aria-label="الرجوع للصفحة الرئيسية">
               <HomeIcon />
             </button>
           </div>
         </div>
         <div
-          className="flex flex-col items-center justify-center flex-grow h-screen py-[2dvh] px-[2dvh] overflow-y-auto break-words"
+          className="flex flex-col items-center justify-center flex-grow min-h-0 py-[2dvh] px-[2dvh] overflow-y-auto break-words"
           onClick={handleContentClick}
           onPointerDown={startLongPress}
           onPointerUp={cancelLongPress}
@@ -226,13 +226,15 @@ export default function ZekrCard({
               className="text-[var(--text-color)] cursor-pointer leading-loose my-0 mb-5 py-[3dvh] text-center transition-colors duration-300 tap-highlight-none"
               style={{
                 fontSize: `${fontScale}dvh`,
+                fontFamily: "ScheherazadeNew, Cairo, sans-serif",
+                fontWeight: "650",
                 whiteSpace: "pre-line",
               }}
             >
               {phrase.text}
             </h2>
           </div>
-          {showSubText && (
+          {showSubText && phrase.subtext && (
             <hr className="border-[var(--button-border-color)] my-4 w-full" />
           )}
           {showSubText && phrase.subtext && (
@@ -241,7 +243,7 @@ export default function ZekrCard({
         </div>
         <div className="flex justify-between">
           <button
-            className={`flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-0.5 px-1 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoBack ? "" : "invisible"}`}
+            className={`flex items-center justify-center h-11 w-11 bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoBack ? "" : "invisible"}`}
             onClick={() => dispatch(decrementIndex())}
             aria-label="Previous phrase"
           >
@@ -255,7 +257,7 @@ export default function ZekrCard({
           />
 
           <button
-            className={`flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-0.5 px-1 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoForward ? "" : "invisible"}`}
+            className={`flex items-center justify-center h-11 w-11 bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoForward ? "" : "invisible"}`}
             onClick={() => dispatch(incrementIndex())}
             aria-label="Next phrase"
           >
