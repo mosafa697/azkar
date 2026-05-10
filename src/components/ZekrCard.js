@@ -66,6 +66,7 @@ export default function ZekrCard({
   onPhraseClick,
   isAnimating,
   onBack,
+  categoryName,
 }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -165,15 +166,20 @@ export default function ZekrCard({
             <button className="invisible"></button>
             {/* TODO: find another way */}
           </div>
-          <div className="bg-[var(--secondary-bg-color)] border border-[var(--button-border-color)] rounded-lg overflow-hidden h-2.5 w-[20dvh]">
-            <div
-              className="bg-[var(--icon-color)] h-full transition-width duration-300 ease-in-out w-[var(--progress-width)] gpu-accelerate"
-              style={{ "--progress-width": `${progressPercentage}%` }}
-              role="progressbar"
-              aria-valuenow={indexCount}
-              aria-valuemax={phasesLength}
-              aria-label="تقدم الذكر"
-            />
+          <div className="flex flex-col items-center gap-1">
+            <span className="inline-flex items-center justify-center rounded-full border border-[var(--button-border-color)] bg-[var(--card-bg-color)] px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[var(--text-color)] shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
+              {categoryName || ""}
+            </span>
+            <div className="bg-[var(--secondary-bg-color)] border border-[var(--button-border-color)] rounded-lg overflow-hidden h-2.5 w-[20dvh]">
+              <div
+                className="bg-[var(--icon-color)] h-full transition-width duration-300 ease-in-out w-[var(--progress-width)] gpu-accelerate"
+                style={{ "--progress-width": `${progressPercentage}%` }}
+                role="progressbar"
+                aria-valuenow={indexCount}
+                aria-valuemax={phasesLength}
+                aria-label="تقدم الذكر"
+              />
+            </div>
           </div>
 
           <div className="flex gap-2">
