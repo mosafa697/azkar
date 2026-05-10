@@ -111,6 +111,11 @@ git checkout "$MAIN_BRANCH"
 git merge --no-ff -m "Merge dev into main" "$DEV_BRANCH"
 echo_success "Merged $DEV_BRANCH into $MAIN_BRANCH."
 
+# Push main branch to origin.
+echo_step "Pushing $MAIN_BRANCH to origin"
+git push origin "$MAIN_BRANCH"
+echo_success "Pushed $MAIN_BRANCH to origin."
+
 echo_step "Deployment preparation complete"
 echo_success "main-temp contains the latest clone of main."
 echo_success "main now includes merged changes from dev."
