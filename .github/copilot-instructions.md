@@ -51,16 +51,6 @@ React Router v7 with programmatic navigation:
 - Exported functions: `getItem()`, `setItem()`, `removeItem()`, `isLocalStorageAvailable()`
 - All Redux slices use this pattern for persistence
 
-### Testing Setup ([src/tests/test-utils.js](src/tests/test-utils.js))
-Custom `render()` wrapper required for all component tests:
-```javascript
-import { render, screen } from '../test-utils';  // Not from @testing-library/react
-```
-- Auto-wraps with Redux Provider + MemoryRouter
-- Accepts `preloadedState` for Redux state setup
-- Returns `{ store, ...renderResult }` for store inspection
-- Mock localStorage/sessionStorage in beforeEach
-
 ### Swipe Navigation ([ZekrCard.js](src/components/ZekrCard.js))
 Uses `react-swipeable` for phrase navigation:
 - Custom hook `useSwipeNavigation` encapsulates swipe logic
@@ -84,18 +74,8 @@ Uses `react-swipeable` for phrase navigation:
 ### Running & Building
 ```bash
 npm start          # Dev server on localhost:3000
-npm test           # Interactive test watch mode
-npm run test:coverage  # Coverage report (70% threshold for all metrics)
 npm run build      # Production build to /build directory
 ```
-
-### Testing Requirements
-- Coverage thresholds enforced: 70% branches/functions/lines/statements
-- Excluded from coverage: index.js, service workers, reportWebVitals, setupTests, test files
-- **Always** use custom test-utils render, never direct RTL import
-- Mock azkarMapper in tests - see [CategoryAzkar.test.js](src/tests/components/CategoryAzkar.test.js#L7-L48)
-- Use `jest.useFakeTimers()` for animation tests with setTimeout
-- Clear localStorage/sessionStorage in beforeEach hooks
 
 ### Configuration
 - Font scale config in [src/config/config.js](src/config/config.js) - supports env vars but has sensible defaults
@@ -115,8 +95,7 @@ npm run build      # Production build to /build directory
 ### New Redux State
 1. Create slice in [src/store](src/store) following existing patterns (localStorage persistence if needed)
 2. Add reducer to [store.js](src/store/store.js) configureStore
-3. Update [test-utils.js](src/tests/test-utils.js) defaultState
-4. Export actions from slice, import in components
+3. Export actions from slice, import in components
 
 ### New Theme
 1. Add theme name to themeSlice.list

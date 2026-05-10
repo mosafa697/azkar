@@ -55,33 +55,30 @@ const ContactMe = () => {
   };
 
   return (
-    <div className="contact-section">
+    <div className="text-center">
       <button
-        className="contact-collapse-btn"
+        className="bg-[var(--slider-bg-active)] text-[var(--icon-color-active)] rounded-xl px-4 py-3 text-base cursor-pointer transition-colors duration-200 hover:bg-[var(--icon-color)] hover:text-[var(--button-bg-color)]"
         onClick={() => setContactOpen((prev) => !prev)}
       >
         {contactOpen ? "إغلاق" : "تواصل معي للشكاوى والمقترحات"}
       </button>
       {contactOpen && (
         <form
-          className="contact-form"
+          className="mt-4 bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-2xl p-4 flex flex-col gap-4 animate-fadeIn"
           netlify 
           netlify-honeypot="bot-field"
           name="contact"
           method="POST"
           onSubmit={handleContactSubmit}
         >
-          {/* Required hidden input for Netlify */}
           <input type="hidden" name="form-name" value="contact" />
-
-          {/* Honeypot field (invisible to users, used to catch bots) */}
           <p hidden>
             <label>
               Don't fill this out: <input name="bot-field" />
             </label>
           </p>
 
-          <label>
+          <label className="flex flex-col gap-2 text-[var(--text-color)]">
             الاسم
             <input
               type="text"
@@ -89,65 +86,43 @@ const ContactMe = () => {
               value={contactName}
               onChange={(e) => setContactName(e.target.value)}
               required
-              className="contact-input"
+              className="w-full rounded-lg border border-[var(--button-border-color)] bg-[var(--card-bg-color)] px-3 py-2 text-base text-[var(--text-color)] outline-none"
             />
           </label>
-          <label>
+          <label className="flex flex-col gap-2 text-[var(--text-color)]">
             الرسالة
             <textarea
               name="message"
               value={contactMsg}
               onChange={(e) => setContactMsg(e.target.value)}
               required
-              className="contact-textarea"
+              className="w-full min-h-[100px] resize-y rounded-lg border border-[var(--button-border-color)] bg-[var(--card-bg-color)] px-3 py-2 text-base text-[var(--text-color)] outline-none"
             />
           </label>
-          <div className="contact-github-link">
+          <div className="text-left text-sm text-[var(--icon-color)]">
             <a
               href="https://github.com/mosafa697/azkar"
               target="_blank"
               rel="noopener noreferrer"
+              className="underline"
             >
               للمطورين: يمكنكم أيضًا المساهمة في تنفيذ المشروع على مستودع GitHub
             </a>
           </div>
-          {/* Status Messages */}
           {submitStatus === 'success' && (
-            <div className="submit-success" style={{ 
-              color: '#10b981', 
-              textAlign: 'center', 
-              margin: '10px 0',
-              padding: '8px',
-              backgroundColor: '#ecfdf5',
-              borderRadius: '4px',
-              border: '1px solid #10b981'
-            }}>
+            <div className="rounded-lg border border-[#10b981] bg-[#ecfdf5] p-3 text-center text-[#047857]">
               ✅ تم إرسال رسالتك بنجاح! شكراً لك
             </div>
           )}
-          
           {submitStatus === 'error' && (
-            <div className="submit-error" style={{ 
-              color: '#ef4444', 
-              textAlign: 'center', 
-              margin: '10px 0',
-              padding: '8px',
-              backgroundColor: '#fef2f2',
-              borderRadius: '4px',
-              border: '1px solid #ef4444'
-            }}>
+            <div className="rounded-lg border border-[#ef4444] bg-[#fef2f2] p-3 text-center text-[#b91c1c]">
               ❌ حدث خطأ. تأكد من ملء جميع الحقول وحاول مرة أخرى
             </div>
           )}
-
           <button
             type="submit"
-            className="contact-submit-btn"
+            className="rounded-lg bg-[var(--slider-bg-active)] px-4 py-3 text-base font-semibold text-[var(--icon-color-active)] transition-colors duration-200 hover:bg-[var(--icon-color)] disabled:opacity-70 disabled:cursor-not-allowed"
             disabled={isSubmitting}
-            style={{
-              opacity: isSubmitting ? 0.7 : 1,
-              cursor: isSubmitting ? 'not-allowed' : 'pointer',
-            }}
           >
             {isSubmitting ? 'جاري الإرسال...' : 'إرسال'}
           </button>
