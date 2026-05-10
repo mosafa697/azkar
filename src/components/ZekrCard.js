@@ -221,7 +221,7 @@ export default function ZekrCard({
             />
           )}
 
-          <div className="inline-block text-center">
+          <div className="inline-block text-center overflow-y-scroll">
             <h2
               className="text-[var(--text-color)] cursor-pointer leading-loose my-0 mb-5 py-[3dvh] text-center transition-colors duration-300 tap-highlight-none"
               style={{
