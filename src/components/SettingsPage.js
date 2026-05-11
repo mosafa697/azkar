@@ -37,7 +37,7 @@ export default function SettingsPage({ onBack }) {
   }, [theme, themeList]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[var(--bg-color)] px-8">
+    <div className="flex items-center justify-center min-vh-100 bg-[var(--bg-color)] px-8">
       <div className="flex flex-col gap-6 bg-[var(--card-bg-color)] rounded-2xl shadow-lg text-[var(--text-color)] max-w-md min-h-1/2 p-8 w-full text-center">
         <div className="flex justify-start items-center p-2 text-[2.6dvh] text-[var(--text-color)] direction-ltr">
           <button className="flex items-center justify-center bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer py-1 px-1.5 transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]" onClick={onBack} aria-label="الرجوع">
