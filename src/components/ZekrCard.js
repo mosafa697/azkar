@@ -142,7 +142,7 @@ export default function ZekrCard({
   const showSwipeIndicator = Math.abs(swipeOffset) > SWIPE_THRESHOLD;
 
   return (
-    <div className="flex items-center justify-center h-screen bg-[var(--bg-color)] p-4">
+    <div className="flex items-center justify-center vh-100 bg-[var(--bg-color)] p-4">
       <div className="flex flex-col gap-6 bg-[var(--card-bg-color)] rounded-2xl shadow-lg text-[var(--text-color)] h-full max-h-full max-w-md overflow-hidden p-4 w-full">
         {/* Controls Header */}
         <div className="flex items-center justify-between flex-shrink-0">
