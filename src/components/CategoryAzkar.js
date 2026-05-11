@@ -17,6 +17,7 @@ export default function CategoryAzkar({ categoryId, onBack }) {
   const index = useSelector((state) => state.indexCount.value);
 
   const categoryAzkar = azkar.find((item) => item.id === categoryId);
+  const categoryName = categoryAzkar ? categoryAzkar.title : "";
   const shuffle = useSelector((state) => state.phases.shuffle);
   const wasShuffled = useSelector((state) => state.phases.wasShuffled);
 
@@ -98,6 +99,7 @@ export default function CategoryAzkar({ categoryId, onBack }) {
           onPhraseClick={handlePhraseClick}
           isAnimating={isAnimating}
           onBack={handleBack}
+          categoryName={categoryName}
         />
       )}
     </>

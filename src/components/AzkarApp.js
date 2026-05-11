@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate, useParams } from "react-router-dom";
-import "../styles/App.css";
 import CategoryAzkar from "./CategoryAzkar";
 import Categories from "./Categories";
 import SettingsPage from "./SettingsPage";
