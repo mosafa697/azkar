@@ -10,6 +10,14 @@
     backface-visibility: hidden;
     perspective: 1000px;
   }
+
+  .vh-100 {
+    height: calc(var(--vh, 1vh) * 100);
+  }
+
+  .min-vh-100 {
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
 }
 
 /* Font face for ScheherazadeNew */
