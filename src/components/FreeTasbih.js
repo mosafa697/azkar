@@ -3,11 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ZekrCounter from "./ZekrCounter";
 import { incrementTotalCount } from "../store/totalCountSlice";
-import {
-  HomeIcon,
-  ToothIcon,
-  TrashIcon,
-} from "../icons/iconRepo.js";
+import { HomeIcon, ToothIcon, TrashIcon } from "../icons/iconRepo.js";
 
 export default function FreeTasbih({ onBack }) {
   const dispatch = useDispatch();
@@ -20,7 +16,9 @@ export default function FreeTasbih({ onBack }) {
     setCount((c) => c + 1);
     dispatch(incrementTotalCount());
     setIsAnimating(true);
+
     if (animTimerRef.current) clearTimeout(animTimerRef.current);
+
     animTimerRef.current = setTimeout(() => setIsAnimating(false), 160);
   };
 
@@ -32,7 +30,7 @@ export default function FreeTasbih({ onBack }) {
   };
 
   const handleReset = () => {
-      setCount(0);
+    setCount(0);
   };
 
   return (
