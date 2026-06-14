@@ -3,12 +3,18 @@ import { BrowserRouter as Router, Routes, Route, useNavigate, useParams } from "
 import CategoryAzkar from "./CategoryAzkar";
 import Categories from "./Categories";
 import SettingsPage from "./SettingsPage";
+import FreeTasbih from "./FreeTasbih";
 
 // Wrapper component for Categories to handle navigation
 function CategoriesPage() {
   const navigate = useNavigate();
 
   const handleCategorySelect = (categoryId) => {
+    // special case: free tasbih route
+    if (categoryId === "free-tasbih") {
+      navigate(`/free-tasbih`);
+      return;
+    }
     navigate(`/category/${categoryId}`);
   };
 
@@ -58,6 +64,7 @@ export default function AzkarApp() {
       <Routes>
         <Route path="/" element={<CategoriesPage />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
+        <Route path="/free-tasbih" element={<FreeTasbih onBack={() => window.history.back()} />} />
         <Route path="/settings" element={<SettingsPageWrapper />} />
       </Routes>
     </Router>
