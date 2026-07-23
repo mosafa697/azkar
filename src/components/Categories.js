@@ -38,6 +38,13 @@ export default function Categories({ onCategorySelect, onOpenSettings }) {
           />
         </div>
         <div className="flex flex-col gap-4 md:grid md:grid-cols-2">
+          <button
+            className="bg-[var(--button-bg-color)] border-0 rounded-lg text-[var(--text-color)] cursor-pointer text-[2.8dvh] font-bold font-[ScheherazadeNew,Cairo,sans-serif] px-4 py-3 text-center transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)]"
+            onClick={() => onCategorySelect("free-tasbih")}
+            aria-label="Free Tasbih"
+          >
+            مسبحة حرة
+          </button>
           {filteredCategories.map((category) => (
             <button
               key={category.id}
