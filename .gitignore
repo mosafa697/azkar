@@ -9,6 +9,7 @@
 
 # production
 /build
+deploy-main.sh
 
 # misc
 .DS_Store

@@ -17,12 +17,13 @@ import {
 import ZekrCounter from "./ZekrCounter.js";
 import SubPhrase from "./SubPhase.js";
 import { useSwipeable } from "react-swipeable";
+import config from "../config/config";
+import useTimeGuardedCallback from "../utils/useTimeGuardedCallback";
 
 // Constants
 const SWIPE_DAMPENING = 0.5;
 const SWIPE_ANIMATION_DURATION = 200;
 const SWIPE_THRESHOLD = 50;
-const LONG_PRESS_DURATION = 600;
 
 // Custom hook for swipe functionality
 const useSwipeNavigation = (dispatch) => {
@@ -114,7 +115,7 @@ export default function ZekrCard({
     longPressTimerRef.current = setTimeout(async () => {
       setLongPressTriggered(true);
       await copyTextToClipboard(phrase.text);
-    }, LONG_PRESS_DURATION);
+    }, config.interaction.longPressMs);
   };
 
   const cancelLongPress = () => {
@@ -133,6 +134,13 @@ export default function ZekrCard({
     }
     onPhraseClick();
   };
+
+  const handleGuardedButtonClick = useTimeGuardedCallback(
+    (e, callback) => {
+      callback?.(e);
+    },
+    config.interaction.navButtonGuardMs
+  );
 
   // Helper functions
   const progressPercentage = (indexCount / phasesLength) * 100;
@@ -251,7 +259,7 @@ export default function ZekrCard({
         <div className="flex justify-between">
           <button
             className={`flex items-center justify-center h-11 w-11 bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoBack ? "" : "invisible"}`}
-            onClick={() => dispatch(decrementIndex())}
+            onClick={(e) => handleGuardedButtonClick(e, () => dispatch(decrementIndex()))}
             aria-label="Previous phrase"
           >
             <ChevronRightIcon />
@@ -265,7 +273,7 @@ export default function ZekrCard({
 
           <button
             className={`flex items-center justify-center h-11 w-11 bg-[var(--button-bg-color)] border border-[var(--button-border-color)] rounded-lg text-[var(--text-color)] cursor-pointer transition-colors duration-200 tap-highlight-none hover:bg-[var(--button-hover-bg-color)] self-center ${canGoForward ? "" : "invisible"}`}
-            onClick={() => dispatch(incrementIndex())}
+            onClick={(e) => handleGuardedButtonClick(e, () => dispatch(incrementIndex()))}
             aria-label="Next phrase"
           >
             <ChevronLeftIcon />
