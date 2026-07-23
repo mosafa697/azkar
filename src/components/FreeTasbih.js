@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import ZekrCounter from "./ZekrCounter";
 import { incrementTotalCount } from "../store/totalCountSlice";
 import { HomeIcon, ToothIcon, TrashIcon } from "../icons/iconRepo.js";
+import config from "../config/config";
+import useTimeGuardedCallback from "../utils/useTimeGuardedCallback";
 
 export default function FreeTasbih({ onBack }) {
   const dispatch = useDispatch();
@@ -12,15 +14,18 @@ export default function FreeTasbih({ onBack }) {
   const [isAnimating, setIsAnimating] = useState(false);
   const animTimerRef = useRef(null);
 
-  const handleTap = () => {
+  const handleTap = useTimeGuardedCallback((e) => {
     setCount((c) => c + 1);
     dispatch(incrementTotalCount());
     setIsAnimating(true);
 
     if (animTimerRef.current) clearTimeout(animTimerRef.current);
 
-    animTimerRef.current = setTimeout(() => setIsAnimating(false), 160);
-  };
+    animTimerRef.current = setTimeout(
+      () => setIsAnimating(false),
+      config.interaction.freeTasbihAnimationMs
+    );
+  }, config.interaction.freeTasbihTapGuardMs);
 
   const handleKeyDown = (e) => {
     if (e.key === " " || e.key === "Enter") {
