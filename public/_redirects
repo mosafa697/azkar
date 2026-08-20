@@ -1,0 +1,3 @@
+# Catch-all for SPA client-side routing (React Router)
+# Cloudflare Pages serves existing static files first, then falls back to index.html
+/* /index.html 200
