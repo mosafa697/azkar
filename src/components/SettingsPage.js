@@ -13,7 +13,6 @@ import {
   TrashIcon,
 } from "../icons/iconRepo";
 import { themeIcons } from "../mappers/themeIconsMapper";
-import ContactMe from "./ContactMe";
 
 export default function SettingsPage({ onBack }) {
   const dispatch = useDispatch();
@@ -116,7 +115,6 @@ export default function SettingsPage({ onBack }) {
               </span>
             </div>
           </div>
-          <ContactMe />
         </div>
       </div>
     </div>
